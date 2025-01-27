@@ -15,6 +15,8 @@ This is a simple portfolio website built with HTML, CSS, and JavaScript. It show
 - AI integration
 - 'ME' cartoon/AI logo 'reacting' differently according to different actions/clicks
 - glowing icons/buttons?
+- when swiping up (going down webpage), trigger video animation at the top (hand pulling page?)
+- looping animations?
   
 
 ### Main Features
