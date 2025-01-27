@@ -1,0 +1,26 @@
+.about {
+    background-color: var(--section-bg);
+    padding: 5rem 0;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.about-image img {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-text {
+    max-width: 600px;
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    color: var(--light-text);
+}

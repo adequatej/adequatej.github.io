@@ -124,3 +124,13 @@ section {
 .highlight {
     color: var(--primary-color);
 }
+
+/* Dark Mode */
+body.dark-mode {
+    --background: #1f2937;
+    --section-bg: #040405;
+    --text-color: #f3f4f6;
+    --light-text: #d1d5db;
+    --primary-color: #60a5fa;
+    --secondary-color: #3b82f6;
+}

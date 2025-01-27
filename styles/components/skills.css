@@ -1,0 +1,38 @@
+.skills {
+    background-color: var(--background);
+    padding: 5rem 0;
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.skills.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skills-container {
+    text-align: center;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skill-category {
+    flex: 1;
+    min-width: 200px;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+

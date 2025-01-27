@@ -1,0 +1,42 @@
+.projects {
+    background-color: var(--section-bg);
+    padding: 5rem 0;
+}
+
+.projects-container {
+    text-align: center;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--background);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+}
+
+.project-content {
+    padding: 1rem;
+}
+
+.project-links a {
+    margin-right: 0.5rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 500;
+}
