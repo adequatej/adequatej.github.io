@@ -107,6 +107,9 @@ section {
 
 .btn-primary:hover {
     background-color: var(--secondary-color);
+    display: inline-block;
+    transform: scale(1.05);
+    transition: var(--transition);
 }
 
 .btn-secondary {

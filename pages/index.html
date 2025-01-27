@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../styles/components/projects.css">
     <link rel="stylesheet" href="../styles/components/contact.css">
     <link rel="stylesheet" href="../styles/components/footer.css">
+    <link rel="stylesheet" href="../styles/components/modal.css">
 
 </head>
 <body>
@@ -79,26 +80,26 @@
                 <div class="skill-category">
                     <h3>Frontend</h3>
                     <ul class="skills-list">
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>JavaScript</li>
-                        <li>React</li>
+                        <img src="../assets/icons/html5.svg" alt="HTML5" class="skill-icon">
+                        <img src="../assets/icons/css3.svg" alt="CSS3" class="skill-icon">
+                        <img src="../assets/icons/javascript.svg" alt="JavaScript" class="skill-icon">
+                        <img src="../assets/icons/react.svg" alt="React" class="skill-icon">
                     </ul>
                 </div>
                 <div class="skill-category">
                     <h3>Backend</h3>
                     <ul class="skills-list">
-                        <li>Node.js</li>
-                        <li>Python</li>
-                        <li>SQL</li>
+                        <img src="../assets/icons/node.js.svg" alt="Node.js" class="skill-icon">
+                        <img src="../assets/icons/python.svg" alt="Python" class="skill-icon">
+                        <img src="../assets/icons/next.js.svg" alt="Next.js" class="skill-icon">
                     </ul>
                 </div>
                 <div class="skill-category">
                     <h3>Tools & Others</h3>
                     <ul class="skills-list">
-                        <li>Git</li>
-                        <li>Docker</li>
-                        <li>AWS</li>
+                        <img src="../assets/icons/git.svg" alt="Git" class="skill-icon">
+                        <img src="../assets/icons/docker.svg" alt="Docker" class="skill-icon">
+                        <img src="../assets/icons/aws.svg" alt="AWS" class="skill-icon">
                     </ul>
                 </div>
             </div>
@@ -113,7 +114,7 @@
                 <!-- Project Card 1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="../assets/images/projects/project1.jpg" alt="Project 1">
+                        <img src="../assets/images/projects/nakamarecs.jpeg" alt="Project 1">
                     </div>
                     <div class="project-content">
                         <h3>NakamaRecs</h3>
@@ -128,7 +129,7 @@
                 <!-- Add more project cards -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="../assets/images/projects/project1.jpg" alt="Project 1">
+                        <img src="../assets/images/projects/animalfusion.jpeg" alt="Project 1">
                     </div>
                     <div class="project-content">
                         <h3>AnimalFusion</h3>
@@ -183,6 +184,16 @@
         </div>
     </footer>
 
+    <!-- Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Project Title</h2>
+            <img id="modal-image" src="" alt="Project Image">
+            <p id="modal-description">Project description goes here.</p>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script src="../scripts/main.js"></script>
     <script src="../scripts/components/navbar.js"></script>
@@ -190,7 +201,9 @@
     <script src="../scripts/components/skills.js"></script>
     <script src="../scripts/components/contact.js"></script>
     <script src="../scripts/main.js"></script>
+    <script src="../scripts/components/model.js"></script>
 
 
 </body>
 </html>
+

@@ -19,15 +19,34 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: var(--transition);
+    position: relative; /* For positioning overlay */
 }
 
 .project-card:hover {
     transform: translateY(-5px);
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);    cursor: pointer;
+    transform: scale(1.05);
+    transition: var(--transition);
+
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Fixed height for consistent aspect ratio */
+    overflow: hidden; /* Hide overflow */
 }
 
 .project-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.5); /* Slight zoom on hover */
 }
 
 .project-content {
@@ -40,3 +59,4 @@
     color: var(--primary-color);
     font-weight: 500;
 }
+
