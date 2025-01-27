@@ -2,7 +2,14 @@
 
 This is a simple portfolio website built with HTML, CSS, and JavaScript. It showcases my skills, projects, and experiences.
 
-### Features
+
+### Features I want to incorporate
+- Keep track of count of users that click and view website (maybe further implement for each page/project/etc.
+- dark and light mode switch (implement further with an intuitive 'lightbulb' at the top?)
+- 
+  
+
+### Main Features
 
 - Responsive design for desktop and mobile devices
 - Interactive sections with animations
