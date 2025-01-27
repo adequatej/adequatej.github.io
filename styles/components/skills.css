@@ -1,14 +1,9 @@
 .skills {
-    background-color: var(--background);
+    background-color: var(--background-color);
     padding: 5rem 0;
     opacity: 0; 
     transform: translateY(20px); 
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.skills.fade-in {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .skills-container {
@@ -34,11 +29,13 @@
 }
 
 .skill-icon {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 8px;
+    border-radius: 50%;
+    overflow: hidden;
 }
+
 
 .skill-icon:hover {
     transform: scale(1.25);

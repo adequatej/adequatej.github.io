@@ -12,12 +12,12 @@ window.addEventListener('scroll', () => {
         navbar.classList.remove('scrolled');
     }
 
-    // Hide/show navbar based on scroll direction
-    if (currentScroll > lastScroll && currentScroll > 500) {
-        navbar.style.transform = 'translateY(-100%)';
-    } else {
-        navbar.style.transform = 'translateY(0)';
-    }
+    // // Hide/show navbar based on scroll direction
+    // if (currentScroll > lastScroll && currentScroll > 500) {
+    //     navbar.style.transform = 'translateY(-100%)';
+    // } else {
+    //     navbar.style.transform = 'translateY(0)';
+    // }
 
     lastScroll = currentScroll;
 });
