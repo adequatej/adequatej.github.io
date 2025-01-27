@@ -5,9 +5,13 @@ This is a simple portfolio website built with HTML, CSS, and JavaScript. It show
 
 ### Features/ideas I want to incorporate
 - Keep track of count of users that click and view website (maybe further implement for each page/project/etc.
-- dark and light mode switch (implement further with an intuitive 'lightbulb' at the top?)
+- dark and light mode switch (implement further with an intuitive 'lightbulb' at the top?) 
 - create/add personal logo/logos 
 - pages for more responsive and cool things (animation following mouse?)
+  - interactive spider web
+  - interactive lightning
+  - interactive electric tentacles
+  - simple interective pixie dusk cursor for less distraction
 - AI integration
 - 'ME' cartoon/AI logo 'reacting' differently according to different actions/clicks
 - glowing icons/buttons?
