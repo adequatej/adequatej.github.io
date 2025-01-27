@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#me">Jed Geoghegan</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#aboutme">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <h1>Hi, I'm <span class="highlight">Jed Geoghegan</span></h1>
+            <h2>Software Engineer</h2>
+            <p class="hero-description">
+                Turning ideas into reality through code | Full Stack Developer
+            </p>
+            <div class="hero-buttons">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="../assets/images/profile/profile-pic.jpg" alt="Jed Geoghegan">
+                </div>
+                <div class="about-text">
+                    <p>
+                        Hello! I'm a passionate software engineer with a focus on creating 
+                        efficient and user-friendly applications. With a strong foundation in 
+                        both front-end and back-end development, I enjoy turning complex 
+                        problems into simple, beautiful solutions.
+                    </p>
+                    <p>
+                        When I'm not coding, you can find me [Your Interests/Hobbies]. 
+                        I'm always eager to learn new technologies and take on challenging projects.
+                    </p>
+                    <a href="../assets/documents/resume.pdf" class="btn btn-primary" target="_blank">
+                        View Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="skills-container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <ul class="skills-list">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>React</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend</h3>
+                    <ul class="skills-list">
+                        <li>Node.js</li>
+                        <li>Python</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Others</h3>
+                    <ul class="skills-list">
+                        <li>Git</li>
+                        <li>Docker</li>
+                        <li>AWS</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="projects-container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project Card 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../assets/images/projects/project1.jpg" alt="Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>NakamaRecs</h3>
+                        <p>Anime Recommendation System</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-small">Live Demo</a>
+                            <a href="#" class="btn btn-small">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <!-- Add more project cards -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../assets/images/projects/project1.jpg" alt="Project 1">
+                    </div>
+                    <div class="project-content">
+                        <h3>AnimalFusion</h3>
+                        <p>Image2Text Generation</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-small">Live Demo</a>
+                            <a href="#" class="btn btn-small">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-cta">
+                <a href="projects/index.html" class="btn btn-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Feel free to reach out for collaborations or just a friendly hello</p>
+                    <div class="social-links">
+                        <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+                        <a href="mailto:your.email@example.com">Email</a>
+                    </div>
+                </div>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Jed Geoghegan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/components/navbar.js"></script>
+    <script src="../scripts/components/scrolling.js"></script>
+</body>
+</html>
