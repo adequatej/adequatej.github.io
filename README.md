@@ -4,7 +4,7 @@ This is a simple portfolio website built with HTML, CSS, and JavaScript. It show
 
 
 ### Features/ideas I want to incorporate
-- Keep track of count of users that click and view website (maybe further implement for each page/project/etc.
+- Keep track of count of users that click and view website (maybe further implement for each page/project/etc.)
 - dark and light mode switch (implement further with an intuitive 'lightbulb' at the top?) 
 - create/add personal logo/logos 
 - pages for more responsive and cool things (animation following mouse?)
@@ -21,6 +21,8 @@ This is a simple portfolio website built with HTML, CSS, and JavaScript. It show
 - make personal logo in nav bar for hero section
 - timeline for projects?
 - incorporate diff sections, not just projects?
+- improve nav bar
+- responsive for diff screen sizes/devices *
   
 
 ### Main Features
