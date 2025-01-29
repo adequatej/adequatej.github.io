@@ -1,3 +1,4 @@
+/* Contact Section */
 .contact {
     background-color: var(--background-color);
     padding: 5rem 0;
@@ -14,13 +15,97 @@
     margin-bottom: 2rem;
 }
 
-.social-links a {
-    margin: 0 0.5rem;
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 500;
+
+/* Social Media Buttons */
+.social-media-buttons {
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+    margin: 2rem 0; 
 }
 
+/* Light Mode Buttons */
+.social-media-button {
+    background: none;
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.social-media-button svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--text-color); 
+    stroke-width: 1;
+    transition: all 0.3s ease;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .social-media-button {
+    background: none;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+body.dark-mode .social-media-button svg {
+    width: 24px;
+    height: 24px;
+    stroke: white;
+    stroke-width: 1;
+    transition: all 0.3s ease;
+}
+
+/* GitHub hover state */
+.social-media-button.github:hover {
+    background-color: #333;
+    border-color: #333;
+}
+
+.social-media-button.github:hover svg {
+    fill: white;
+    stroke: white;
+}
+
+/* LinkedIn hover state */
+.social-media-button.linkedin:hover {
+    background-color: #0077b5;
+    border-color: #0077b5;
+}
+
+.social-media-button.linkedin:hover svg {
+    fill: white;
+    stroke: white;
+}
+
+/* Email hover state */
+.social-media-button.email:hover {
+    background-color: #EA4335;
+    border-color: #EA4335;
+}
+
+.social-media-button.email:hover svg {
+    fill: white;
+    stroke: white;
+}
+
+
+
+/* Contact Form */
 .contact-form {
     max-width: 500px;
     width: 100%;

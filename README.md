@@ -23,6 +23,7 @@ This is a simple portfolio website built with HTML, CSS, and JavaScript. It show
 - incorporate diff sections, not just projects?
 - improve nav bar
 - responsive for diff screen sizes/devices *
+- add flicker after glow effect after clicking theme toggle
   
 
 ### Main Features
