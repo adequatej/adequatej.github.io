@@ -140,7 +140,6 @@ body.dark-mode {
 
 }
 
-
 /* Initial state for sections */
 section {
     background-color: var(--background-color);
@@ -157,3 +156,42 @@ section.active {
     background-color: var(--background-color);
 }
 
+
+
+/* Responsive for diff screen sizes/devices */
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide nav links on smaller screens */
+    }
+
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-container, .about-container, .skills-container, .projects-container, .contact-container {
+        padding: 0 1rem; /* Reduce padding for smaller screens */
+    }
+
+    .skills-grid, .projects-grid {
+        grid-template-columns: 1fr; /* Single column layout for smaller screens */
+    }
+
+    .about-container {
+        flex-direction: column; /* Stack elements vertically */
+        text-align: center; /* Center text */
+    }
+
+    .about-image img {
+        width: 150px; /* Smaller image size */
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .skills-grid, .projects-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns for medium screens */
+    }
+}
