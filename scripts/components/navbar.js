@@ -54,6 +54,17 @@ const updateTheme = (isDarkMode) => {
     localStorage.setItem('darkMode', isDarkMode);
 };
 
+// // Toggle Light Mode
+// const updateTheme2 = (isLightMode) => {
+//     if (isLightMode) {
+//         body.classList.add('light-mode');
+//     } else {
+//         body.classList.remove('light-mode');
+//     }
+//     localStorage.setItem('lightMode', isLightMode);
+// }
+
+
 // Handle theme toggle click
 const handleToggle = (event) => {
     console.log('Button clicked');
@@ -65,6 +76,14 @@ const handleToggle = (event) => {
     triggerGlowAnimation();
 };
 
+
+// const handleToggle = (event) => {
+//     console.log('Toggle activated');
+//     event.preventDefault();
+
+//     const isLightMode = !
+// }
+
 console.log('Theme toggle element:', themeToggle);
 
 themeToggle.addEventListener('click', handleToggle);
@@ -72,3 +91,7 @@ themeToggle.addEventListener('click', handleToggle);
 const savedDarkMode = localStorage.getItem('darkMode') === 'true';
 updateTheme(savedDarkMode);
 
+
+// document.querySelector('menu-bar').addEventListener('click;, () => {
+//     console.log('Menu clicked');
+//     });
