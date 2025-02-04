@@ -94,4 +94,4 @@ updateTheme(savedDarkMode);
 
 // document.querySelector('menu-bar').addEventListener('click;, () => {
 //     console.log('Menu clicked');
-//     });
+//     });gi
