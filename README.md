@@ -25,7 +25,7 @@ This is a simple portfolio website built with HTML, CSS, and JavaScript. It show
 - responsive for diff screen sizes/devices *
 - add flicker after glow effect after clicking theme toggle
   
-
+ast
 ### Main Features
 
 - Responsive design for desktop and mobile devices
