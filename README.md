@@ -2,6 +2,19 @@
 
 This is a simple portfolio website built with HTML, CSS, and JavaScript. It showcases my skills, projects, and experiences.
 
+Iteration 1:
+- HTML
+- CSS
+- JavaScript
+
+Iteration 2:
+- Next.js
+- Tailwind CSS (Material Tailwind)
+- TypeScript
+- Vercel, Atlas
+- MongoDB
+- NextAuth
+- Husky Precommit
 
 ### Features/ideas I want to incorporate
 - Keep track of count of users that click and view website (maybe further implement for each page/project/etc.)
