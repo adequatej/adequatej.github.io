@@ -12,7 +12,6 @@ Iteration 2:
 - Tailwind CSS (Material Tailwind)
 - TypeScript
 - Vercel, Atlas
-- MongoDB
 - NextAuth
 - Husky Precommit
 
@@ -37,8 +36,12 @@ Iteration 2:
 - improve nav bar
 - responsive for diff screen sizes/devices *
 - add flicker after glow effect after clicking theme toggle
+
+### Fix Reminders
+- fix navbar to show for different screen sizes
+- fix handler routing for email in contact form
+
   
-ast
 ### Main Features
 
 - Responsive design for desktop and mobile devices
