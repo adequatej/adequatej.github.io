@@ -1,0 +1,26 @@
+.btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: rgb(255, 255, 255);
+    color: var(--primary-color);
+}
+
+.btn-small {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+
+

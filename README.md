@@ -2,6 +2,18 @@
 
 This is a simple portfolio website built with HTML, CSS, and JavaScript. It showcases my skills, projects, and experiences.
 
+Iteration 1:
+- HTML
+- CSS
+- JavaScript
+
+Iteration 2:
+- Next.js
+- Tailwind CSS (Material Tailwind)
+- TypeScript
+- Vercel, Atlas
+- NextAuth
+- Husky Precommit
 
 ### Features/ideas I want to incorporate
 - Keep track of count of users that click and view website (maybe further implement for each page/project/etc.)
@@ -24,8 +36,12 @@ This is a simple portfolio website built with HTML, CSS, and JavaScript. It show
 - improve nav bar
 - responsive for diff screen sizes/devices *
 - add flicker after glow effect after clicking theme toggle
+
+### Fix Reminders
+- fix navbar to show for different screen sizes
+- fix handler routing for email in contact form
+
   
-ast
 ### Main Features
 
 - Responsive design for desktop and mobile devices

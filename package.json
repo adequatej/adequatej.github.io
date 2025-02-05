@@ -1,0 +1,29 @@
+{
+  "name": "jedgeoghegan",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "mongodb": "latest"
+  },
+  "description": "This is a simple portfolio website built with HTML, CSS, and JavaScript. It showcases my skills, projects, and experiences.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adequatej/jedgeoghegan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adequatej/jedgeoghegan/issues"
+  },
+  "homepage": "https://github.com/adequatej/jedgeoghegan#readme"
+}
