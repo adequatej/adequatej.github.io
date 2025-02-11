@@ -12,6 +12,7 @@ Iteration 2:
 - Tailwind CSS (Material Tailwind)
 - TypeScript
 - Vercel, Atlas
+- MongoDB
 - NextAuth
 - Husky Precommit
 
