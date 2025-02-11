@@ -24,6 +24,14 @@ This is a simple portfolio website built with HTML, CSS, and JavaScript. It show
 - improve nav bar
 - responsive for diff screen sizes/devices *
 - add flicker after glow effect after clicking theme toggle
+- make default theme dark
+
+
+### Checks
+- make sure to add personal logos 
+- make sure to add timeline feature for projects
+- make sure to add AI integration
+- make sure to incorporate SEO technics (google lighthouse)
   
 ast
 ### Main Features
