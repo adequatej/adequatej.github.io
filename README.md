@@ -37,8 +37,19 @@ Iteration 2:
 - improve nav bar
 - responsive for diff screen sizes/devices *
 - add flicker after glow effect after clicking theme toggle
+- make default theme dark
+
+### Checks
+- make sure to add personal logos 
+- make sure to add timeline feature for projects
+- make sure to add AI integration
+- make sure to incorporate SEO technics (google lighthouse)
+
+### Fix Reminders
+- fix navbar to show for different screen sizes
+- fix handler routing for email in contact form
+
   
-ast
 ### Main Features
 
 - Responsive design for desktop and mobile devices
