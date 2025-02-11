@@ -1,6 +1,7 @@
 .footer-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
 }
 
@@ -11,4 +12,5 @@
 .footer-text p {
     margin-bottom: 1rem;
     color: var(--light-text);
+    display: flex;
 }

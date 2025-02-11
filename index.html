@@ -15,9 +15,16 @@
     <link rel="stylesheet" href="../styles/components/contact.css">
     <link rel="stylesheet" href="../styles/components/footer.css">
     <link rel="stylesheet" href="../styles/components/modal.css">
-
+    <link rel="stylesheet" href="../styles/components/visitor-counter.css">
+    <link rel="stylesheet" href="../styles/components/buttons.css">
 </head>
 <body>
+    <!-- Visitor Counter-->
+    <div class="visitor-counter">
+        <p>Unique Visitors: <span id="unique-count">0</span></p>
+        <p>Total Visits: <span id="total-count">0</span></p>
+    </div>
+
     <!-- Navbar -->
     <nav id="navbar" class="navbar">
         <div class="nav-container">
@@ -58,13 +65,12 @@
                 </div>
                 <div class="about-text">
                     <p>
-                        Hello! I'm a passionate software engineer with a focus on creating 
+                        Hello! I'm a Computer Science and Data Science double major with a focus on creating 
                         efficient and user-friendly applications. With a strong foundation in 
-                        both front-end and back-end development, I enjoy turning complex 
-                        problems into simple, beautiful solutions.
+                        both front-end and back-end development, I enjoy creating applications that are both functional and aesthetically pleasing.
                     </p>
                     <p>
-                        When I'm not coding, you can find me [Your Interests/Hobbies]. 
+                        When I'm not coding, you can find me playing soccer, watching anime, or hanging out with friends. 
                         I'm always eager to learn new technologies and take on challenging projects.
                     </p>
                     <a href="../assets/documents/resume.pdf" class="btn btn-primary" target="_blank">
@@ -205,6 +211,7 @@
             <p>&copy; 2024 Jed Geoghegan. All rights reserved.</p>
         </div>
     </footer>
+    <br><br><br>
 
     <!-- Modal -->
     <div id="project-modal" class="modal">
@@ -225,6 +232,8 @@
     <script src="../scripts/main.js"></script>
     <script src="../scripts/components/model.js"></script>
     <script src="../scripts/components/scrollAnimation.js"></script>
+    <script src="../scripts/components/visitorCounter.js"></script>
+    
 </body>
 </html>
 

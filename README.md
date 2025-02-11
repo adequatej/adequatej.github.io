@@ -2,6 +2,18 @@
 
 This is a simple portfolio website built with HTML, CSS, and JavaScript. It showcases my skills, projects, and experiences.
 
+Iteration 1:
+- HTML
+- CSS
+- JavaScript
+
+Iteration 2:
+- Next.js
+- Tailwind CSS (Material Tailwind)
+- TypeScript
+- Vercel, Atlas
+- NextAuth
+- Husky Precommit
 
 ### Features/ideas I want to incorporate
 - Keep track of count of users that click and view website (maybe further implement for each page/project/etc.)
@@ -26,14 +38,17 @@ This is a simple portfolio website built with HTML, CSS, and JavaScript. It show
 - add flicker after glow effect after clicking theme toggle
 - make default theme dark
 
-
 ### Checks
 - make sure to add personal logos 
 - make sure to add timeline feature for projects
 - make sure to add AI integration
 - make sure to incorporate SEO technics (google lighthouse)
+
+### Fix Reminders
+- fix navbar to show for different screen sizes
+- fix handler routing for email in contact form
+
   
-ast
 ### Main Features
 
 - Responsive design for desktop and mobile devices
