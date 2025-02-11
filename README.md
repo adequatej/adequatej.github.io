@@ -7,12 +7,16 @@ Iteration 1:
 - CSS
 - JavaScript
 
-Iteration 2:
-- Next.js
-- Tailwind CSS (Material Tailwind)
+Iteration 2.1:
+- React
+- Tailwind CSS
+- Firebase (for visitor counts and for email routing and form handling)
 - TypeScript
+
+Iteration 2.2:
+- Next.js
+- Material Tailwind
 - Vercel, Atlas
-- MongoDB
 - NextAuth
 - Husky Precommit
 
@@ -38,6 +42,10 @@ Iteration 2:
 - responsive for diff screen sizes/devices *
 - add flicker after glow effect after clicking theme toggle
 - make default theme dark
+- add initial loading personal animation with a skip button
+- centralize hero seciton and make it be full page view
+- make particle effects that connect where mouse hovers
+- or instead have a subtle colored light that tracks your mouse
 
 ### Checks
 - make sure to add personal logos 

@@ -5,6 +5,7 @@ class VisitorCounter {
         this.uniqueCountElement = document.getElementById('unique-count');
         this.totalCountElement = document.getElementById('total-count');
         this.visitorId = this.getOrCreateVisitorId();
+        this.lastVisitTime = localStorage.getItem('lastVisitTime');
         this.initializeCounter();
     }
 
@@ -17,27 +18,30 @@ class VisitorCounter {
         return visitorId;
     }
 
+    // Added a visit timeout (30 minutes) to prevent counting page reloads as new visits
+    // This is to prevent spamming the counter
     initializeCounter() {
-        const storedTotal = localStorage.getItem('totalVisits') || 0;
-        const storedUnique = localStorage.getItem('uniqueVisitors') || 0;
-        
-        this.updateDisplay(parseInt(storedUnique), parseInt(storedTotal));
-        this.recordVisit();
-    }
+        const currentTime = Date.now();
+        const visitTimeout = 30 * 60 * 1000; // 30 minutes in milliseconds
 
-    recordVisit() {
-        let totalVisits = parseInt(localStorage.getItem('totalVisits') || 0);
-        let uniqueVisitors = parseInt(localStorage.getItem('uniqueVisitors') || 0);
+        // Get stored values
+        let totalVisits = parseInt(localStorage.getItem('totalVisits') || '0');
+        let uniqueVisitors = parseInt(localStorage.getItem('uniqueVisitors') || '0');
 
-        totalVisits++;
-        
-        if (!localStorage.getItem('hasVisited')) {
-            uniqueVisitors++; 
-            localStorage.setItem('hasVisited', 'true');
+        // Check if this is a new visit
+        if (!this.lastVisitTime || (currentTime - parseInt(this.lastVisitTime)) > visitTimeout) {
+            // Increment total visits only for new visits
+            totalVisits++;
+            localStorage.setItem('totalVisits', totalVisits);
+            localStorage.setItem('lastVisitTime', currentTime.toString());
+
+            // Check for unique visitor
+            if (!localStorage.getItem('hasVisited')) {
+                uniqueVisitors++;
+                localStorage.setItem('uniqueVisitors', uniqueVisitors);
+                localStorage.setItem('hasVisited', 'true');
+            }
         }
-
-        localStorage.setItem('totalVisits', totalVisits);
-        localStorage.setItem('uniqueVisitors', uniqueVisitors);
 
         this.updateDisplay(uniqueVisitors, totalVisits);
     }
@@ -52,6 +56,7 @@ class VisitorCounter {
     }
 }
 
+// Initialize counter when page loads
 document.addEventListener('DOMContentLoaded', () => {
     new VisitorCounter();
 });
