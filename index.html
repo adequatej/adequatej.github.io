@@ -19,13 +19,29 @@
     <link rel="stylesheet" href="../styles/components/buttons.css">
 </head>
 <body>
-    <!-- Visitor Counter-->
+    <!-- Visitor Counter -->
     <div class="visitor-counter">
         <p>Unique Visitors: <span id="unique-count">0</span></p>
         <p>Total Visits: <span id="total-count">0</span></p>
     </div>
 
-    <!-- Navbar -->
+    <!-- Hero Section -->
+    <section id="hero" class="hero initial-view">
+        <div class="hero-container">
+            <h1 class="hero-title">Hi, I'm <span class="highlight">Jed Geoghegan</span></h1><br>
+            <h2 class="hero-title">Software</h2>
+            <h3 class="hero-title2">Engineer</h3>
+            <p class="hero-description">
+                Turning ideas into reality through code | Full Stack Developer
+            </p>
+            <button id="skip-button" class="skip-button">
+                <span>View my Work</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Move navbar after hero section -->
     <nav id="navbar" class="navbar">
         <div class="nav-container">
             <ul class="nav-links">
@@ -40,21 +56,6 @@
             </button>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-        <div class="hero-container">
-            <h1 class="hero-title">Hi, I'm <span class="highlight">Jed Geoghegan</span></h1><br>
-            <h2 class="hero-title">Software</h2>
-            <h3 class="hero-title2">Engineer</h3>
-
-            <p class="hero-description">
-                Turning ideas into reality through code | Full Stack Developer
-            </p>
-            <div class="hero-buttons">
-            </div>
-        </div>
-    </section>
 
     <!-- About Section -->
     <section id="about" class="about">
@@ -233,6 +234,7 @@
     <script src="../scripts/components/model.js"></script>
     <script src="../scripts/components/scrollAnimation.js"></script>
     <script src="../scripts/components/visitorCounter.js"></script>
+    <script src="../scripts/components/hero.js"></script>
     
 </body>
 </html>
