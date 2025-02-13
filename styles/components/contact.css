@@ -37,6 +37,21 @@
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 0 10px;
+    position: relative;
+    overflow: visible;
+}
+
+.social-media-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    opacity: 0;
 }
 
 .social-media-button svg {
@@ -60,6 +75,12 @@ body.dark-mode .social-media-button {
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 0 10px;
+    position: relative;
+    overflow: visible;
+}
+
+body.dark-mode .social-media-button::before {
+    filter: brightness(1.2);
 }
 
 body.dark-mode .social-media-button svg {
@@ -103,7 +124,26 @@ body.dark-mode .social-media-button svg {
     stroke: white;
 }
 
+/* GitHub glow */
+.social-media-button.github:hover::before {
+    box-shadow: 0 0 20px #333,
+                0 0 30px #333;
+    opacity: 0.7;
+}
 
+/* LinkedIn glow */
+.social-media-button.linkedin:hover::before {
+    box-shadow: 0 0 20px #0077b5,
+                0 0 30px #0077b5;
+    opacity: 0.7;
+}
+
+/* Email glow */
+.social-media-button.email:hover::before {
+    box-shadow: 0 0 20px #EA4335,
+                0 0 30px #EA4335;
+    opacity: 0.7;
+}
 
 /* Contact Form */
 .contact-form {
