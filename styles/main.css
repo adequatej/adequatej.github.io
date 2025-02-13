@@ -8,7 +8,7 @@
     --section-bg: white;
     --transition: all 0.3s ease;
 }
-
+/* need to clean up later to get rid of redundant styling */
 /* Reset & Base Styles */
 * {
     margin: 0;
@@ -80,9 +80,87 @@ h2 {
 }
 
 /* Section Styles */
-section {
-    padding: 5rem 0;
+section:not(#hero) {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    margin: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(2px);
 }
+
+body.dark-mode section:not(#hero) {
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Global background wrapper - sits behind everything */
+.background-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: transparent;
+}
+
+/* Content wrapper - so for no background or blur */
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: transparent !important;
+}
+
+/* Container styles */
+.about-container,
+.skills-container,
+.projects-container,
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 4;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+    background: transparent !important;
+    visibility: visible !important; 
+}
+
+/* Active state for containers */
+section.active .about-container,
+section.active .skills-container,
+section.active .projects-container,
+section.active .contact-container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific skills container visibility */
+.skills-container {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1;
+}
+
+/* Hero section - completely transparent */
+#hero {
+    background: transparent !important;
+    backdrop-filter: none !important;
+}
+
 
 .section-title {
     text-align: center;
@@ -136,25 +214,12 @@ body.dark-mode {
     --primary-color: #60a5fa;
     --secondary-color: #3b82f6;
     background-color: var(--background-color);
-
 }
 
-/* Initial state for sections */
-section {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.5s ease-out, transform 0.4s ease-out, background-color 0.3s ease;
-    will-change: opacity, transform, background-color;
+/* Dark mode adjustments */
+body.dark-mode .background-wrapper {
+    background: rgba(0, 0, 0, 0.7);
 }
-
-section.active {
-    opacity: 1;
-    transform: translateY(0);
-    background-color: var(--background-color);
-}
-
 
 /* Responsive for diff screen sizes/devices */
 

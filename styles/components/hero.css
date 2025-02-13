@@ -18,7 +18,7 @@ body.dark-mode .hero {
 
 .hero-container > * {
     opacity: 0;
-    transform: translateY(0px);
+    transform: translateY(30px);
     text-align: center;
 }
 .hero-title {
@@ -33,7 +33,7 @@ body.dark-mode .hero {
 
 .hero h1 {
     margin-bottom: 1rem;
-    animation: slideDown 0.7s ease-out forwards;
+    animation: slideUp 0.8s ease-out 0.5s forwards;
 }
 
 .hero h2, .hero h3 {
@@ -43,9 +43,8 @@ body.dark-mode .hero {
     display: inline-block;
 }
 
-/* Apply animations */
 .hero h2 {
-    animation: slideInFromLeft 1s ease-out 0.5s; 
+    animation: slideUp 0.8s ease-out 0.8s forwards; 
     animation-fill-mode: forwards; 
     margin-left: 60px;
 }
@@ -64,6 +63,7 @@ body.dark-mode .hero {
     animation-fill-mode: both;
 }
 
+/* Need to fix animations later */
 @keyframes heroFadeIn {
     from {
         opacity: 0;
@@ -173,30 +173,23 @@ body.dark-mode .hero {
     animation: fadeInUp 1s ease-out forwards;
 }
 
-.visitor-counter {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    z-index: 1000;
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out 1.4s forwards;
-}
-
 .skip-button {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease-out 1.2s forwards;
+    position: relative;
+    margin-top: 2rem;
     background: transparent;
     border: 2px solid var(--primary-color);
     color: var(--text-color);
-    padding: 0.8rem 1.5rem;
+    padding: 0.5rem 1rem;
     border-radius: 25px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin: 2rem auto 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out 1.5s forwards;
     transition: all 0.3s ease;
+    margin: 2rem auto 0;
 }
 
 .skip-button:hover {
@@ -260,15 +253,4 @@ body.dark-mode .skip-button:hover {
         padding: 0.4rem 0.8rem;
         font-size: 0.9rem;
     }
-}
-
-.navbar {
-    opacity: 0;
-    transform: translateY(-100%);
-    transition: all 0.3s ease;
-}
-
-.navbar.visible {
-    opacity: 1;
-    transform: translateY(0);
 }

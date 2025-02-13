@@ -6,25 +6,40 @@ section {
     scroll-margin-top: var(--navbar-height);
 }
 
+/* Main navbar styles */
 .navbar {
+    position: relative;
+    width: 100%;
+    height: var(--navbar-height);
+    background: var(--background-color);
+    color: var(--text-color);
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0 2rem;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.navbar.fixed {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    color: var(--text-color);
+    background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(10px);
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    padding: 1rem 2rem;
+}
+
+body.initial-load .navbar {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
 }
 
 /* Navbar styling */
@@ -41,19 +56,16 @@ section {
     transition: var(--transition);
 }
 
-/* Dark mode Navbar */
+/* Dark mode styles */
 body.dark-mode .navbar {
-    background: rgba(0, 0, 0, 0.95);
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-
+    background: var(--background-color);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
 }
 
 /* Dark mode: Navbar link text color */
 body.dark-mode .nav-links a {
     color: white; 
 }
-
 
 /* Light mode: Active link */
 .nav-links a.active {
@@ -72,7 +84,6 @@ body.dark-mode .nav-links a.active {
 body.dark-mode .nav-links a:hover {
     color: var(--primary-color);
 }
-
 
 /* Theme Toggle Button */
 .theme-toggle {
@@ -104,18 +115,17 @@ body.dark-mode .nav-links a:hover {
     transform: scale(1.1);
 }
 
-/* Test Animation */
+/* test */
 @keyframes testGlow {
     0% { background-color: red; }
     100% { background-color: blue; }
 }
 
-/* Apply test animation */
 .theme-toggle.active {
     animation: testGlow 1.5s ease-in-out;
 }
 
-/* Glow effect */
+/* Glow effect, will change later prolly */
 @keyframes spiralGlowLight {
     0% {
         box-shadow: 
@@ -172,7 +182,7 @@ body.dark-mode .nav-links a:hover {
     }
 }
 
-/* Apply different animations based on theme */
+/* based on theme */
 body:not(.dark-mode) .theme-toggle.active {
     animation: spiralGlowLight 1s ease-in-out;
 }

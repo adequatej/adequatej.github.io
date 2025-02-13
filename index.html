@@ -17,8 +17,12 @@
     <link rel="stylesheet" href="../styles/components/modal.css">
     <link rel="stylesheet" href="../styles/components/visitor-counter.css">
     <link rel="stylesheet" href="../styles/components/buttons.css">
+    <link rel="stylesheet" href="../styles/components/particle-background.css">
 </head>
 <body>
+    <!-- For cool particle effect -->
+    <canvas id="particle-canvas"></canvas>
+
     <!-- Visitor Counter -->
     <div class="visitor-counter">
         <p>Unique Visitors: <span id="unique-count">0</span></p>
@@ -41,7 +45,7 @@
         </div>
     </section>
 
-    <!-- Move navbar after hero section -->
+    <!-- Navbar -->
     <nav id="navbar" class="navbar">
         <div class="nav-container">
             <ul class="nav-links">
@@ -57,154 +61,155 @@
         </div>
     </nav>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-container">
-            <h2 class="section-title">About Me</h2>
-                <div class="about-image">
-                    <img src="../assets/images/profile/442FF098-8320-4AC4-8A43-FAFCDA48265A_1_201_a.jpeg" alt="Jed Geoghegan">
-                </div>
-                <div class="about-text">
-                    <p>
-                        Hello! I'm a Computer Science and Data Science double major with a focus on creating 
-                        efficient and user-friendly applications. With a strong foundation in 
-                        both front-end and back-end development, I enjoy creating applications that are both functional and aesthetically pleasing.
-                    </p>
-                    <p>
-                        When I'm not coding, you can find me playing soccer, watching anime, or hanging out with friends. 
-                        I'm always eager to learn new technologies and take on challenging projects.
-                    </p>
-                    <a href="../assets/documents/resume.pdf" class="btn btn-primary" target="_blank">
-                        View Resume
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <!-- TODO: Add Responsive Pictures of Skills Instead  -->
-    <section id="skills" class="skills">
-        <div class="skills-container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Frontend</h3>
-                    <ul class="skills-list">
-                        <img src="../assets/icons/html5.svg" alt="HTML5" class="skill-icon">
-                        <img src="../assets/icons/css3.svg" alt="CSS3" class="skill-icon">
-                        <img src="../assets/icons/javascript.svg" alt="JavaScript" class="skill-icon">
-                        <img src="../assets/icons/react.svg" alt="React" class="skill-icon">
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend</h3>
-                    <ul class="skills-list">
-                        <img src="../assets/icons/node.js.svg" alt="Node.js" class="skill-icon">
-                        <img src="../assets/icons/python.svg" alt="Python" class="skill-icon">
-                        <img src="../assets/icons/next.js.svg" alt="Next.js" class="skill-icon">
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Others</h3>
-                    <ul class="skills-list">
-                        <img src="../assets/icons/git.svg" alt="Git" class="skill-icon">
-                        <img src="../assets/icons/docker.svg" alt="Docker" class="skill-icon">
-                        <img src="../assets/icons/aws.svg" alt="AWS" class="skill-icon">
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="projects-container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <!-- Project Card 1 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="../assets/images/projects/nakamarecs.jpeg" alt="Project 1">
+    <div class="content-wrapper">
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="about-container">
+                <h2 class="section-title">About Me</h2>
+                    <div class="about-image">
+                        <img src="../assets/images/profile/442FF098-8320-4AC4-8A43-FAFCDA48265A_1_201_a.jpeg" alt="Jed Geoghegan">
                     </div>
-                    <div class="project-content">
-                        <h3>NakamaRecs</h3>
-                        <p>Anime Recommendation System</p>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-small">Live Demo</a>
-                            <a href="#" class="btn btn-small">GitHub</a>
+                    <div class="about-text">
+                        <p>
+                            Hello! I'm a Computer Science and Data Science double major with a focus on creating 
+                            efficient and user-friendly applications. With a strong foundation in 
+                            both front-end and back-end development, I enjoy creating applications that are both functional and aesthetically pleasing.
+                        </p>
+                        <p>
+                            When I'm not coding, you can find me playing soccer, watching anime, or hanging out with friends. 
+                            I'm always eager to learn new technologies and take on challenging projects.
+                        </p>
+                        <a href="../assets/documents/resume.pdf" class="btn btn-primary" target="_blank">
+                            View Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <!-- TODO: Add Responsive Pictures of Skills Instead  -->
+        <section id="skills" class="skills">
+            <div class="skills-container">
+                <h2 class="section-title">Skills & Technologies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <ul class="skills-list">
+                            <img src="../assets/icons/html5.svg" alt="HTML5" class="skill-icon">
+                            <img src="../assets/icons/css3.svg" alt="CSS3" class="skill-icon">
+                            <img src="../assets/icons/javascript.svg" alt="JavaScript" class="skill-icon">
+                            <img src="../assets/icons/react.svg" alt="React" class="skill-icon">
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <ul class="skills-list">
+                            <img src="../assets/icons/node.js.svg" alt="Node.js" class="skill-icon">
+                            <img src="../assets/icons/python.svg" alt="Python" class="skill-icon">
+                            <img src="../assets/icons/next.js.svg" alt="Next.js" class="skill-icon">
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Tools & Others</h3>
+                        <ul class="skills-list">
+                            <img src="../assets/icons/git.svg" alt="Git" class="skill-icon">
+                            <img src="../assets/icons/docker.svg" alt="Docker" class="skill-icon">
+                            <img src="../assets/icons/aws.svg" alt="AWS" class="skill-icon">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <div class="projects-container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project Card 1 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="../assets/images/projects/nakamarecs.jpeg" alt="Project 1">
+                        </div>
+                        <div class="project-content">
+                            <h3>NakamaRecs</h3>
+                            <p>Anime Recommendation System</p>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">Live Demo</a>
+                                <a href="#" class="btn btn-small">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <!-- will add more project cards -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="../assets/images/projects/animalfusion.jpeg" alt="Project 1">
+                        </div>
+                        <div class="project-content">
+                            <h3>AnimalFusion</h3>
+                            <p>Image2Text Generation</p>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">Live Demo</a>
+                                <a href="#" class="btn btn-small">GitHub</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <br><br>
-                <!-- Add more project cards -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="../assets/images/projects/animalfusion.jpeg" alt="Project 1">
-                    </div>
-                    <div class="project-content">
-                        <h3>AnimalFusion</h3>
-                        <p>Image2Text Generation</p>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-small">Live Demo</a>
-                            <a href="#" class="btn btn-small">GitHub</a>
+                <div class="projects-cta">
+                    <a href="projects/index.html" class="btn btn-primary">View All Projects</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="contact-container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <p>Feel free to reach out for collaborations or just a friendly hello</p>
+                        <div class="social-media-buttons">
+                            <!-- GitHub -->
+                            <a href="https://github.com/adequatej" target="_blank" class="social-media-button github">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 0C5.373 0 0 5.373 0 12c0 5.304 3.438 9.8 8.205 11.387.6.111.82-.261.82-.577 0-.287-.011-1.243-.017-2.25-3.338.724-4.043-1.607-4.043-1.607-.546-1.384-1.333-1.754-1.333-1.754-1.089-.743.083-.728.083-.728 1.205.085 1.838 1.237 1.838 1.237 1.068 1.826 2.8 1.297 3.48.992.108-.774.418-1.297.76-1.597-2.665-.303-5.467-1.333-5.467-5.933 0-1.313.469-2.386 1.236-3.227-.124-.303-.536-1.53.117-3.187 0 0 1.008-.322 3.303 1.23.958-.266 1.988-.398 3.006-.403 1.018.005 2.048.137 3.006.403 2.295-1.552 3.303-1.23 3.303-1.23.653 1.657.241 2.884.118 3.187.767.841 1.236 1.914 1.236 3.227 0 4.61-2.805 5.63-5.475 5.93.43.37.815 1.1.815 2.22 0 1.604-.014 2.898-.014 3.287 0 .319.218.693.825.577C20.563 21.8 24 17.304 24 12c0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://linkedin.com/in/jed-geoghegan" target="_blank" class="social-media-button linkedin">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                                </svg>
+                            </a>
+
+                            <!-- Email -->
+                            <a href="mailto:jedgeoghegan@gmail.com" target="_blank" class="social-media-button email">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z"/>
+                                </svg>
+                            </a>
                         </div>
                     </div>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
-            <div class="projects-cta">
-                <a href="projects/index.html" class="btn btn-primary">View All Projects</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>Feel free to reach out for collaborations or just a friendly hello</p>
-                    <div class="social-media-buttons">
-                        <!-- GitHub -->
-                        <a href="https://github.com/adequatej" target="_blank" class="social-media-button github">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12 0C5.373 0 0 5.373 0 12c0 5.304 3.438 9.8 8.205 11.387.6.111.82-.261.82-.577 0-.287-.011-1.243-.017-2.25-3.338.724-4.043-1.607-4.043-1.607-.546-1.384-1.333-1.754-1.333-1.754-1.089-.743.083-.728.083-.728 1.205.085 1.838 1.237 1.838 1.237 1.068 1.826 2.8 1.297 3.48.992.108-.774.418-1.297.76-1.597-2.665-.303-5.467-1.333-5.467-5.933 0-1.313.469-2.386 1.236-3.227-.124-.303-.536-1.53.117-3.187 0 0 1.008-.322 3.303 1.23.958-.266 1.988-.398 3.006-.403 1.018.005 2.048.137 3.006.403 2.295-1.552 3.303-1.23 3.303-1.23.653 1.657.241 2.884.118 3.187.767.841 1.236 1.914 1.236 3.227 0 4.61-2.805 5.63-5.475 5.93.43.37.815 1.1.815 2.22 0 1.604-.014 2.898-.014 3.287 0 .319.218.693.825.577C20.563 21.8 24 17.304 24 12c0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-
-                        <!-- LinkedIn -->
-                        <a href="https://linkedin.com/in/jed-geoghegan" target="_blank" class="social-media-button linkedin">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
-                        </a>
-
-                        <!-- Email -->
-                        <a href="mailto:jedgeoghegan@gmail.com" target="_blank" class="social-media-button email">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M0 3v18h24V3H0zm21.518 2L12 12.713 2.482 5h19.036zM2 19V7.183l10 8.104 10-8.104V19H2z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" required placeholder="Your Name">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" required placeholder="Your Email">
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" required placeholder="Your Message"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    <br><br><br>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer id="footer" class="footer">
@@ -235,7 +240,7 @@
     <script src="../scripts/components/scrollAnimation.js"></script>
     <script src="../scripts/components/visitorCounter.js"></script>
     <script src="../scripts/components/hero.js"></script>
-    
+    <script src="../scripts/components/particle-background.js"></script>
 </body>
 </html>
 
