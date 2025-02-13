@@ -16,21 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showContent();
 
-    const handleScroll = () => {
-        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-        const navbarHeight = navbar.offsetHeight;
-        
-        if (window.scrollY >= heroBottom - navbarHeight) {
-            navbar.classList.add('fixed');
-            document.body.style.paddingTop = `${navbarHeight}px`;
-        } else {
-            navbar.classList.remove('fixed');
-            document.body.style.paddingTop = '0';
-        }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
     skipButton.addEventListener('click', () => {
         const nextSection = document.querySelector('#about');
         if (nextSection) {

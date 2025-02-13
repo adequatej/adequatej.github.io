@@ -8,7 +8,8 @@ section {
 
 /* Main navbar styles */
 .navbar {
-    position: relative;
+    position: sticky;
+    top: 0;
     width: 100%;
     height: var(--navbar-height);
     background: var(--background-color);
@@ -18,14 +19,6 @@ section {
     padding: 0 2rem;
     transition: all 0.3s ease;
     opacity: 1;
-}
-
-.navbar.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
 }
 
 body.initial-load .navbar {
