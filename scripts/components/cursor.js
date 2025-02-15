@@ -19,6 +19,13 @@ class CursorEffect {
         this.modes = Object.keys(this.cursorStyles);
         this.currentModeIndex = this.modes.indexOf(this.mode);
         
+        this.positions = [];
+        this.maxPositions = 5;
+        this.lastParticleTime = 0;
+        this.particleInterval = 5;
+        this.velocity = { x: 0, y: 0 };
+        this.lastTimestamp = 0;
+        
         this.initializeToggle();
         this.init();
     }
@@ -97,10 +104,15 @@ class CursorEffect {
         const particle = document.createElement('div');
         particle.className = 'trail-particle';
         
-        particle.style.width = '50px';
-        particle.style.height = '1px';
+        const speed = Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2);
+        const normalizedSpeed = Math.min(Math.max(speed, 0.5), 2);
+        
+        particle.style.width = `${10 * normalizedSpeed}px`;
+        particle.style.height = '1.5px';
         particle.style.transform = `rotate(${angle}deg)`;
-        particle.style.opacity = '0.7';
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.opacity = '0.8';
         
         document.body.appendChild(particle);
         return {
@@ -108,7 +120,7 @@ class CursorEffect {
             createdAt: Date.now(),
             x, y,
             angle,
-            maxLife: 300
+            maxLife: 100
         };
     }
 
@@ -116,12 +128,14 @@ class CursorEffect {
         const particle = document.createElement('div');
         particle.className = 'spray-particle';
         
-        const size = Math.random() * 2 + 1; 
+        const size = Math.random() * 2 + 1;
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 3 + 1; 
+        const speed = Math.random() * 2 + 1;
         
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
         
         document.body.appendChild(particle);
         return {
@@ -129,7 +143,8 @@ class CursorEffect {
             createdAt: Date.now(),
             x, y,
             velocityX: Math.cos(angle) * speed,
-            velocityY: Math.sin(angle) * speed - 1 
+            velocityY: Math.sin(angle) * speed,
+            maxLife: 600
         };
     }
 
@@ -137,72 +152,111 @@ class CursorEffect {
         const particle = document.createElement('div');
         particle.className = 'ripple-particle';
         
-        document.body.appendChild(particle);
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
         
+        document.body.appendChild(particle);
         return {
             element: particle,
             createdAt: Date.now(),
             x, y,
-            size: 0,
-            maxSize: Math.random() * 40 + 20
+            maxLife: 800
         };
     }
 
-    updateParticles() {
-        const now = Date.now();
-        
-        this.particles.forEach((particle, index) => {
-            const age = now - particle.createdAt;
-            const life = 1 - (age / this.particleLifespan);
-            
-            if (life <= 0) {
-                particle.element.remove();
-                this.particles.splice(index, 1);
-                return;
-            }
+    updateVelocity(currentX, currentY, timestamp) {
+        const deltaTime = timestamp - this.lastTimestamp;
+        if (deltaTime > 0) {
+            this.velocity = {
+                x: (currentX - this.currentX) / deltaTime * 16,
+                y: (currentY - this.currentY) / deltaTime * 16
+            };
+        }
+        this.lastTimestamp = timestamp;
+    }
 
-            switch(this.mode) {
-                case 'spray':
-                    particle.velocityY += 0.2; 
-                    particle.x += particle.velocityX;
-                    particle.y += particle.velocityY;
-                    break;
-                case 'ripple':
-                    particle.size = particle.maxSize * (1 - life);
-                    particle.element.style.width = `${particle.size}px`;
-                    particle.element.style.height = `${particle.size}px`;
-                    particle.element.style.borderWidth = `${2 * life}px`;
-                    break;
+    updateCursorTrail(currentX, currentY, timestamp) {
+        this.updateVelocity(currentX, currentY, timestamp);
+        
+        this.positions.unshift({ 
+            x: currentX, 
+            y: currentY, 
+            time: timestamp,
+            velocity: { ...this.velocity }
+        });
+        
+        if (this.positions.length > this.maxPositions) {
+            this.positions.pop();
+        }
+
+        if (this.positions.length < 2) return;
+
+        const speed = Math.sqrt(this.velocity.x ** 2 + this.velocity.y ** 2);
+        if (speed > 0.1 && timestamp - this.lastParticleTime >= this.particleInterval) {
+            const angle = Math.atan2(this.velocity.y, this.velocity.x) * 180 / Math.PI;
+            
+            const offsetDistance = 5;
+            const offsetX = currentX - (this.velocity.x / speed) * offsetDistance;
+            const offsetY = currentY - (this.velocity.y / speed) * offsetDistance;
+            
+            this.particles.push(this.createStreamParticle(offsetX, offsetY, angle));
+            this.lastParticleTime = timestamp;
+        }
+    }
+
+    updateParticles() {
+        const currentTime = Date.now();
+        
+        this.particles = this.particles.filter(particle => {
+            const age = currentTime - particle.createdAt;
+            if (age > particle.maxLife) {
+                particle.element.remove();
+                return false;
             }
             
-            particle.element.style.left = `${particle.x}px`;
-            particle.element.style.top = `${particle.y}px`;
-            particle.element.style.opacity = life;
+            const life = 1 - (age / particle.maxLife);
+            
+            if (this.mode === 'spray') {
+                particle.x += particle.velocityX;
+                particle.y += particle.velocityY;
+                particle.velocityY += 0.05;
+                particle.element.style.left = `${particle.x}px`;
+                particle.element.style.top = `${particle.y}px`;
+                particle.element.style.opacity = life;
+            } else if (this.mode === 'ripple') {
+                const size = (1 - life) * 50;
+                particle.element.style.width = `${size}px`;
+                particle.element.style.height = `${size}px`;
+                particle.element.style.opacity = life * 0.8;
+                particle.element.style.borderWidth = `${1.5 * life}px`;
+            } else if (this.mode === 'trail') {
+                particle.element.style.opacity = life * 0.8;
+            }
+            
+            return true;
         });
         
         requestAnimationFrame(() => this.updateParticles());
     }
 
     updateCursorPosition() {
-        this.currentX += (this.lastX - this.currentX) * this.speed;
-        this.currentY += (this.lastY - this.currentY) * this.speed;
-        
-        this.cursor.style.left = `${this.currentX}px`;
-        this.cursor.style.top = `${this.currentY}px`;
-        
+        this.cursor.style.left = `${this.lastX}px`;
+        this.cursor.style.top = `${this.lastY}px`;
         requestAnimationFrame(() => this.updateCursorPosition());
     }
 
     init() {
         document.addEventListener('mousemove', (e) => {
+            const timestamp = Date.now();
             this.lastX = e.clientX;
             this.lastY = e.clientY;
-            
+
             if (this.mode === 'trail') {
-                const angle = Math.atan2(e.clientY - this.currentY, e.clientX - this.currentX) * 180 / Math.PI;
-                this.particles.push(this.createParticle(this.currentX, this.currentY, angle));
-            } else if (Math.random() > 0.8) { 
-                this.particles.push(this.createParticle(this.currentX, this.currentY));
+                this.updateCursorTrail(e.clientX, e.clientY, timestamp);
+            } else if (this.mode === 'spray' && Math.random() > 0.7) {
+                this.particles.push(this.createSparkParticle(e.clientX, e.clientY));
+            } else if (this.mode === 'ripple' && Math.random() > 0.8) {
+                this.particles.push(this.createRippleParticle(e.clientX, e.clientY));
             }
             
             this.currentX = e.clientX;

@@ -9,7 +9,7 @@
     border: 1.5px solid var(--primary-color);
     background: transparent;
     border-radius: 50%;
-    transition: all 0.2s ease;
+    transition: none;
     box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.3);
 }
 
@@ -109,6 +109,7 @@
     z-index: 9999;
     filter: blur(0.3px);
     box-shadow: 0 0 2px var(--primary-color);
+    transition: opacity 0.1s ease;
 }
 
 /* Trail mode particles */
@@ -116,11 +117,11 @@
     position: fixed;
     pointer-events: none;
     background: linear-gradient(90deg, var(--primary-color) 0%, transparent 95%);
-    border-radius: 20px;
+    border-radius: 2px;
     z-index: 9999;
     transform-origin: left;
     filter: blur(0.2px);
-    transition: opacity 0.15s ease;
+    transition: opacity 0.08s linear;
 }
 
 @media (hover: none) {
@@ -214,9 +215,13 @@
 .ripple-particle {
     position: fixed;
     pointer-events: none;
-    border: 2px solid var(--primary-color);
+    border: 1.5px solid var(--primary-color);
     border-radius: 50%;
     z-index: 9999;
     transform: translate(-50%, -50%);
     opacity: 0.8;
+    width: 0;
+    height: 0;
+    transition: all 0.2s ease-out;
+    box-shadow: 0 0 4px rgba(var(--primary-rgb), 0.2);
 } 
