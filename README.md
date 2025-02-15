@@ -46,6 +46,7 @@ Iteration 2.2:
 - centralize hero seciton and make it be full page view
 - make particle effects that connect where mouse hovers
 - or instead have a subtle colored light that tracks your mouse
+- incorporate spline 
 
 ### Checks
 - make sure to add personal logos 

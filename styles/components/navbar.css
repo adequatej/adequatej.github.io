@@ -203,4 +203,63 @@ body:not(.dark-mode) .theme-toggle .moon {
     }
 }
 
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.cursor-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--text-color);
+    background: transparent;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cursor-toggle i {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.cursor-dropdown {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: var(--background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 150px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cursor-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.cursor-option i {
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
 

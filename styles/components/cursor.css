@@ -1,0 +1,222 @@
+/* Custom cursor container */
+.custom-cursor {
+    width: 12px;
+    height: 12px;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    border: 1.5px solid var(--primary-color);
+    background: transparent;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 8px rgba(var(--primary-rgb), 0.3);
+}
+
+/* SVG cursor style */
+.cursor-svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--primary-color);
+    filter: drop-shadow(0 0 5px var(--primary-color));
+    transform-origin: center;
+    transition: transform 0.2s ease;
+}
+
+/* Particle styles */
+.cursor-particle {
+    position: fixed;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color) 0%,
+        transparent 80%
+    );
+    border-radius: 4px;
+    z-index: 9999;
+    transform-origin: left;
+}
+
+/* Click animation class */
+.custom-cursor.clicking {
+    animation: fillAndPulse 0.4s ease-out;
+}
+
+@keyframes fillAndPulse {
+    0% { 
+        background: transparent;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% { 
+        background: var(--primary-color);
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% { 
+        background: transparent;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Hide default cursor */
+* {
+    cursor: none !important;
+}
+
+/* Show default cursor on touch devices */
+@media (hover: none) {
+    .custom-cursor, .cursor-particle {
+        display: none;
+    }
+    * {
+        cursor: auto !important;
+    }
+}
+
+.cursor-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    display: flex;
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.cursor-button {
+    background: var(--background-color);
+    border: 1px solid var(--primary-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cursor-button.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Spray mode particles */
+.spray-particle {
+    position: fixed;
+    pointer-events: none;
+    background: var(--primary-color);
+    border-radius: 50%;
+    z-index: 9999;
+    filter: blur(0.3px);
+    box-shadow: 0 0 2px var(--primary-color);
+}
+
+/* Trail mode particles */
+.trail-particle {
+    position: fixed;
+    pointer-events: none;
+    background: linear-gradient(90deg, var(--primary-color) 0%, transparent 95%);
+    border-radius: 20px;
+    z-index: 9999;
+    transform-origin: left;
+    filter: blur(0.2px);
+    transition: opacity 0.15s ease;
+}
+
+@media (hover: none) {
+    .cursor-controls,
+    .custom-cursor,
+    .spray-particle,
+    .trail-particle {
+        display: none;
+    }
+}
+
+.cursor-toggle-container {
+    position: relative;
+}
+
+.cursor-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--text-color);
+    background: transparent;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.cursor-toggle::after {
+    content: '▼';
+    font-size: 0.7rem;
+    position: absolute;
+    bottom: 4px;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+}
+
+.cursor-toggle.active::after {
+    transform: rotate(180deg);
+}
+
+.cursor-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    background: var(--background-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 120px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.cursor-dropdown.active {
+    display: flex;
+}
+
+.cursor-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    width: 100%;
+    text-align: left;
+}
+
+.cursor-option:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.cursor-option.active {
+    color: var(--primary-color);
+}
+
+/* Ripple cursor style */
+.ripple-particle {
+    position: fixed;
+    pointer-events: none;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+} 
