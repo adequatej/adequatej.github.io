@@ -101,35 +101,18 @@
         </section>
 
         <!-- Skills Section -->
-        <!-- TODO: Add Responsive Pictures of Skills Instead  -->
         <section id="skills" class="skills">
             <div class="skills-container">
                 <h2 class="section-title">Skills & Technologies</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Frontend</h3>
-                        <ul class="skills-list">
-                            <img src="../assets/icons/html5.svg" alt="HTML5" class="skill-icon">
-                            <img src="../assets/icons/css3.svg" alt="CSS3" class="skill-icon">
-                            <img src="../assets/icons/javascript.svg" alt="JavaScript" class="skill-icon">
-                            <img src="../assets/icons/react.svg" alt="React" class="skill-icon">
-                        </ul>
+                <div class="skills-carousel-container">
+                    <div class="carousel-row">
+                        <div class="carousel-track" id="track1" data-direction="left"></div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Backend</h3>
-                        <ul class="skills-list">
-                            <img src="../assets/icons/node.js.svg" alt="Node.js" class="skill-icon">
-                            <img src="../assets/icons/python.svg" alt="Python" class="skill-icon">
-                            <img src="../assets/icons/next.js.svg" alt="Next.js" class="skill-icon">
-                        </ul>
+                    <div class="carousel-row">
+                        <div class="carousel-track" id="track2" data-direction="right"></div>
                     </div>
-                    <div class="skill-category">
-                        <h3>Tools & Others</h3>
-                        <ul class="skills-list">
-                            <img src="../assets/icons/git.svg" alt="Git" class="skill-icon">
-                            <img src="../assets/icons/docker.svg" alt="Docker" class="skill-icon">
-                            <img src="../assets/icons/aws.svg" alt="AWS" class="skill-icon">
-                        </ul>
+                    <div class="carousel-row">
+                        <div class="carousel-track" id="track3" data-direction="left"></div>
                     </div>
                 </div>
             </div>
@@ -255,6 +238,7 @@
     <script src="../scripts/components/hero.js"></script>
     <script src="../scripts/components/particle-background.js"></script>
     <script src="../scripts/components/cursor.js"></script>
+    <script src="../scripts/components/skills-carousel.js"></script>
 </body>
 </html>
 
