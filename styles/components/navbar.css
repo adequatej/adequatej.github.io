@@ -27,12 +27,255 @@ body.initial-load .navbar {
 }
 
 .nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 1rem;
     max-width: 1200px;
     margin: 0 auto;
-    height: 100%;
+}
+
+.nav-buttons-container {
     display: flex;
-    justify-content: space-between;
+    position: relative;
+    gap: 8px;
     align-items: center;
+    margin-left: 1rem;
+}
+
+.theme-toggle-container {
+    margin-left: auto;
+}
+
+input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+input[type="radio"]:checked + .button {
+    opacity: 1;
+}
+
+.button {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.button::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+input[type="radio"]:checked + .button {
+    opacity: 1;
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+input[type="radio"]:checked + .button::after {
+    transform: scaleX(1);
+}
+
+.button:hover {
+    opacity: 1;
+}
+
+/* Theme toggle specific styles */
+.theme-toggle-container .button {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* Light mode styles */
+body:not(.dark-mode) .button {
+    box-shadow: none;
+    background: transparent;
+}
+
+body:not(.dark-mode) input[type="radio"]:checked + .button {
+    box-shadow: 0 0 15px var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body:not(.dark-mode) .button:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Dark mode styles */
+body.dark-mode .button {
+    box-shadow: 0px 0px 20px -5px rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .button .shadow {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .button .edge {
+    background: linear-gradient(
+        to left,
+        #000000 0%,
+        #1a1a1a 8%,
+        #1a1a1a 92%,
+        #000000 100%
+    );
+}
+
+body.dark-mode .button .front {
+    background: #2a2a2a;
+    color: #ffffff;
+    box-shadow: 
+        inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.button .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    will-change: transform;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.button .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.button .front {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    will-change: transform;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+}
+
+.theme-toggle-container .front i {
+    font-size: 0.9rem;
+}
+
+/* Hover effects */
+.button:hover {
+    opacity: 1;
+}
+
+.button:hover .front {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+}
+
+.button:hover .shadow {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.button:active .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+}
+
+/* Glowing line effect */
+.nav-buttons-container .line,
+.theme-toggle-container .line {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    opacity: 0.2;
+}
+
+body:not(.dark-mode) .line {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 0, 0, 0.5),
+        transparent
+    );
+}
+
+body.dark-mode .line {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+    );
+}
+
+/* Pop animation */
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+input[type="radio"]:checked + .button {
+    opacity: 1;
+    animation: pop 0.3s cubic-bezier(.3, .7, .4, 1.5);
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0.5rem 1rem;
+        justify-content: center;
+    }
+    
+    .nav-buttons-container .button {
+        width: 80px;
+        height: 32px;
+    }
+    
+    .theme-toggle-container .button {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .button .front {
+        font-size: 0.8rem;
+    }
 }
 
 /* Navbar styling */
@@ -261,5 +504,4 @@ body:not(.dark-mode) .theme-toggle .moon {
     width: 20px;
     text-align: center;
 }
-
 

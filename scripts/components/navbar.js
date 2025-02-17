@@ -91,6 +91,135 @@ themeToggle.addEventListener('click', handleToggle);
 const savedDarkMode = localStorage.getItem('darkMode') === 'true';
 updateTheme(savedDarkMode);
 
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section');
+    const navButtons = document.querySelectorAll('.nav-buttons-container input');
+    let isScrolling = false;
+
+    // Smooth scroll to section
+    function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+
+        isScrolling = true;
+        section.scrollIntoView({
+            behavior: 'smooth'
+        });
+
+        // Update URL hash without scrolling
+        history.pushState(null, null, `#${sectionId}`);
+
+        // Reset scrolling flag after animation
+        setTimeout(() => {
+            isScrolling = false;
+        }, 1000);
+    }
+
+    // Update active section in navbar
+    function updateActiveSection() {
+        if (isScrolling) return;
+
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                currentSectionId = section.id;
+            }
+        });
+
+        navButtons.forEach(button => {
+            button.checked = button.id === currentSectionId;
+        });
+    }
+
+    // Event listeners for navbar buttons
+    navButtons.forEach(button => {
+        button.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                scrollToSection(e.target.id);
+            }
+        });
+    });
+
+    // Scroll event listener for updating active section
+    window.addEventListener('scroll', () => {
+        requestAnimationFrame(updateActiveSection);
+    });
+
+    // Initial active section check
+    updateActiveSection();
+
+    // Handle hash links on page load
+    if (window.location.hash) {
+        const sectionId = window.location.hash.substring(1);
+        setTimeout(() => {
+            scrollToSection(sectionId);
+        }, 100);
+    }
+
+    // Add scroll animations to sections
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        root: null,
+        rootMargin: '-20% 0px',
+        threshold: 0
+    });
+
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // Theme handling
+    const themeButtons = document.querySelectorAll('.theme-toggle-container input[type="radio"]');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // Set initial theme based on saved preference or system preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.querySelector(`#${savedTheme}`).checked = true;
+        applyTheme(savedTheme);
+    } else {
+        document.querySelector('#system').checked = true;
+        applyTheme('system');
+    }
+
+    themeButtons.forEach(button => {
+        button.addEventListener('change', () => {
+            const theme = button.id;
+            applyTheme(theme);
+            localStorage.setItem('theme', theme);
+        });
+    });
+
+    // Update theme when system preference changes
+    prefersDarkScheme.addEventListener('change', () => {
+        if (document.querySelector('#system').checked) {
+            applyTheme('system');
+        }
+    });
+
+    function applyTheme(theme) {
+        const isDark = theme === 'dark' || 
+            (theme === 'system' && prefersDarkScheme.matches);
+
+        if (isDark) {
+            document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
+        } else {
+            document.body.classList.add('light-mode');
+            document.body.classList.remove('dark-mode');
+        }
+    }
+});
 
 // document.querySelector('menu-bar').addEventListener('click;, () => {
 //     console.log('Menu clicked');

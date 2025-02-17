@@ -7,6 +7,11 @@
     --background-color: white;
     --section-bg: white;
     --transition: all 0.3s ease;
+    --font-primary: 'Montserrat', sans-serif;
+    --h1-size: 3.5rem;
+    --h2-size: 2.5rem;
+    --h3-size: 2rem;
+    --text-regular: 1rem;
 }
 /* need to clean up later to get rid of redundant styling */
 /* Reset & Base Styles */
@@ -21,8 +26,8 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
+    font-family: var(--font-primary);
+    line-height: 1.6;
     color: var(--text-color);
 }
 
@@ -37,6 +42,12 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .about-container {
@@ -66,16 +77,22 @@ body {
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: var(--h1-size);
     font-weight: 700;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: var(--h2-size);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: var(--h3-size);
     font-weight: 600;
 }
 

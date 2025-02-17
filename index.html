@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../styles/components/buttons.css">
     <link rel="stylesheet" href="../styles/components/particle-background.css">
     <link rel="stylesheet" href="../styles/components/cursor.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- For cool particle effect -->
@@ -30,15 +31,26 @@
         <p>Total Visits: <span id="total-count">0</span></p>
     </div>
 
+    
     <!-- Hero Section -->
     <section id="hero" class="hero initial-view">
+        <div class="moonlight"></div>
         <div class="hero-container">
-            <h1 class="hero-title">Hi, I'm <span class="highlight">Jed Geoghegan</span></h1><br>
-            <h2 class="hero-title">Software</h2>
-            <h3 class="hero-title2">Engineer</h3>
-            <p class="hero-description">
-                Turning ideas into reality through code | Full Stack Developer
-            </p>
+            <div class="text-wrapper">
+                <div class="title-line">
+                    <h1 class="hero-title">Hello, I'm <span class="highlight">Jed</span></h1>
+                </div>
+                <div class="role-line">
+                    <span class="role-prefix">I'm a</span>
+                    <div class="role-carousel">
+                        <div class="role-track">
+                            <span class="role">Software Engineer</span>
+                            <span class="role">Full-Stack Developer</span>
+                            <span class="role">Front-End Developer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <button id="skip-button" class="skip-button">
                 <span>View my Work</span>
                 <i class="fas fa-chevron-down"></i>
@@ -49,11 +61,29 @@
     <!-- Navbar -->
     <nav id="navbar" class="navbar">
         <div class="nav-container">
-            <ul class="nav-links">
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-buttons-container">
+                <div class="line"></div>
+                <label for="home" class="label">
+                    <input checked name="nav-section" type="radio" id="home">
+                    <div class="button">Home</div>
+                </label>
+                <label for="about" class="label">
+                    <input name="nav-section" type="radio" id="about">
+                    <div class="button">About</div>
+                </label>
+                <label for="skills" class="label">
+                    <input name="nav-section" type="radio" id="skills">
+                    <div class="button">Skills</div>
+                </label>
+                <label for="projects" class="label">
+                    <input name="nav-section" type="radio" id="projects">
+                    <div class="button">Projects</div>
+                </label>
+                <label for="contact" class="label">
+                    <input name="nav-section" type="radio" id="contact">
+                    <div class="button">Contact</div>
+                </label>
+            </div>
             <div class="nav-controls">
                 <button class="theme-toggle" id="dark-mode-toggle">
                     <svg class="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -103,16 +133,42 @@
         <!-- Skills Section -->
         <section id="skills" class="skills">
             <div class="skills-container">
-                <h2 class="section-title">Skills & Technologies</h2>
+                <h2 class="section-title">
+                    <span data-text="Skills & Technologies">Skills & Technologies</span>
+                </h2>
                 <div class="skills-carousel-container">
                     <div class="carousel-row">
-                        <div class="carousel-track" id="track1" data-direction="left"></div>
+                        <div class="carousel-track" data-direction="left">
+                            <!-- Frontend Technologies -->
+                            <div class="tech-icon"><img src="assets/icons/html5.svg" alt="HTML5"></div>
+                            <div class="tech-icon"><img src="assets/icons/css3.svg" alt="CSS3"></div>
+                            <div class="tech-icon"><img src="assets/icons/javascript.svg" alt="JavaScript"></div>
+                            <div class="tech-icon"><img src="assets/icons/react.svg" alt="React"></div>
+                            <div class="tech-icon"><img src="assets/icons/vue.svg" alt="Vue.js"></div>
+                            <div class="tech-icon"><img src="assets/icons/typescript.svg" alt="TypeScript"></div>
+                        </div>
                     </div>
                     <div class="carousel-row">
-                        <div class="carousel-track" id="track2" data-direction="right"></div>
+                        <div class="carousel-track" data-direction="right">
+                            <!-- Backend Technologies -->
+                            <div class="tech-icon"><img src="assets/icons/python.svg" alt="Python"></div>
+                            <div class="tech-icon"><img src="assets/icons/nodejs.svg" alt="Node.js"></div>
+                            <div class="tech-icon"><img src="assets/icons/java.svg" alt="Java"></div>
+                            <div class="tech-icon"><img src="assets/icons/php.svg" alt="PHP"></div>
+                            <div class="tech-icon"><img src="assets/icons/mysql.svg" alt="MySQL"></div>
+                            <div class="tech-icon"><img src="assets/icons/mongodb.svg" alt="MongoDB"></div>
+                        </div>
                     </div>
                     <div class="carousel-row">
-                        <div class="carousel-track" id="track3" data-direction="left"></div>
+                        <div class="carousel-track" data-direction="left">
+                            <!-- Tools & Others -->
+                            <div class="tech-icon"><img src="assets/icons/git.svg" alt="Git"></div>
+                            <div class="tech-icon"><img src="assets/icons/docker.svg" alt="Docker"></div>
+                            <div class="tech-icon"><img src="assets/icons/aws.svg" alt="AWS"></div>
+                            <div class="tech-icon"><img src="assets/icons/figma.svg" alt="Figma"></div>
+                            <div class="tech-icon"><img src="assets/icons/vscode.svg" alt="VS Code"></div>
+                            <div class="tech-icon"><img src="assets/icons/github.svg" alt="GitHub"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -146,6 +202,32 @@
                         <div class="project-content">
                             <h3>AnimalFusion</h3>
                             <p>Image2Text Generation</p>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">Live Demo</a>
+                                <a href="#" class="btn btn-small">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="../assets/images/projects/animalfusion.jpeg" alt="Project 1">
+                        </div>
+                        <div class="project-content">
+                            <h3>AnimalFusion</h3>
+                            <p>Image2Text Generation</p>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-small">Live Demo</a>
+                                <a href="#" class="btn btn-small">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="../assets/images/projects/nakamarecs.jpeg" alt="Project 1">
+                        </div>
+                        <div class="project-content">
+                            <h3>NakamaRecs</h3>
+                            <p>Anime Recommendation System</p>
                             <div class="project-links">
                                 <a href="#" class="btn btn-small">Live Demo</a>
                                 <a href="#" class="btn btn-small">GitHub</a>
