@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../styles/components/projects.css">
     <link rel="stylesheet" href="../styles/components/contact.css">
     <link rel="stylesheet" href="../styles/components/footer.css">
-    <link rel="stylesheet" href="../styles/components/modal.css">
     <link rel="stylesheet" href="../styles/components/visitor-counter.css">
     <link rel="stylesheet" href="../styles/components/buttons.css">
     <link rel="stylesheet" href="../styles/components/particle-background.css">
@@ -34,7 +33,6 @@
     
     <!-- Hero Section -->
     <section id="hero" class="hero initial-view">
-        <div class="moonlight"></div>
         <div class="hero-container">
             <div class="text-wrapper">
                 <div class="title-line">
@@ -133,42 +131,16 @@
         <!-- Skills Section -->
         <section id="skills" class="skills">
             <div class="skills-container">
-                <h2 class="section-title">
-                    <span data-text="Skills & Technologies">Skills & Technologies</span>
-                </h2>
+                <h2 class="section-title">Skills & Technologies</h2>
                 <div class="skills-carousel-container">
                     <div class="carousel-row">
-                        <div class="carousel-track" data-direction="left">
-                            <!-- Frontend Technologies -->
-                            <div class="tech-icon"><img src="assets/icons/html5.svg" alt="HTML5"></div>
-                            <div class="tech-icon"><img src="assets/icons/css3.svg" alt="CSS3"></div>
-                            <div class="tech-icon"><img src="assets/icons/javascript.svg" alt="JavaScript"></div>
-                            <div class="tech-icon"><img src="assets/icons/react.svg" alt="React"></div>
-                            <div class="tech-icon"><img src="assets/icons/vue.svg" alt="Vue.js"></div>
-                            <div class="tech-icon"><img src="assets/icons/typescript.svg" alt="TypeScript"></div>
-                        </div>
+                        <div class="carousel-track" id="track1" data-direction="left"></div>
                     </div>
                     <div class="carousel-row">
-                        <div class="carousel-track" data-direction="right">
-                            <!-- Backend Technologies -->
-                            <div class="tech-icon"><img src="assets/icons/python.svg" alt="Python"></div>
-                            <div class="tech-icon"><img src="assets/icons/nodejs.svg" alt="Node.js"></div>
-                            <div class="tech-icon"><img src="assets/icons/java.svg" alt="Java"></div>
-                            <div class="tech-icon"><img src="assets/icons/php.svg" alt="PHP"></div>
-                            <div class="tech-icon"><img src="assets/icons/mysql.svg" alt="MySQL"></div>
-                            <div class="tech-icon"><img src="assets/icons/mongodb.svg" alt="MongoDB"></div>
-                        </div>
+                        <div class="carousel-track" id="track2" data-direction="right"></div>
                     </div>
                     <div class="carousel-row">
-                        <div class="carousel-track" data-direction="left">
-                            <!-- Tools & Others -->
-                            <div class="tech-icon"><img src="assets/icons/git.svg" alt="Git"></div>
-                            <div class="tech-icon"><img src="assets/icons/docker.svg" alt="Docker"></div>
-                            <div class="tech-icon"><img src="assets/icons/aws.svg" alt="AWS"></div>
-                            <div class="tech-icon"><img src="assets/icons/figma.svg" alt="Figma"></div>
-                            <div class="tech-icon"><img src="assets/icons/vscode.svg" alt="VS Code"></div>
-                            <div class="tech-icon"><img src="assets/icons/github.svg" alt="GitHub"></div>
-                        </div>
+                        <div class="carousel-track" id="track3" data-direction="left"></div>
                     </div>
                 </div>
             </div>
@@ -177,66 +149,75 @@
         <!-- Projects Section -->
         <section id="projects" class="projects">
             <div class="projects-container">
-                <h2 class="section-title">Featured Projects</h2>
+                <h2 class="section-title">My Projects</h2>
                 <div class="projects-grid">
-                    <!-- Project Card 1 -->
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="../assets/images/projects/nakamarecs.jpeg" alt="Project 1">
-                        </div>
-                        <div class="project-content">
-                            <h3>NakamaRecs</h3>
-                            <p>Anime Recommendation System</p>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-small">Live Demo</a>
-                                <a href="#" class="btn btn-small">GitHub</a>
+                    <!-- NakamaRecs -->
+                    <div class="project-card" style="background-image: url('../assets/images/projects/luffy.jpg')">
+                        <div class="card-content">
+                            <h3 class="card-title">NakamaRecs</h3>
+                            <p class="card-subtitle">An AI-powered anime recommendation system using collaborative and content-based filtering, processing 10,000+ anime records to deliver personalized suggestions. Built with TensorFlow Recommenders and FastAPI, featuring a Streamlit frontend for intuitive user interaction.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/adequatej/NakamaRecs" class="github-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
                             </div>
                         </div>
                     </div>
-                    <br><br>
-                    <!-- will add more project cards -->
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="../assets/images/projects/animalfusion.jpeg" alt="Project 1">
-                        </div>
-                        <div class="project-content">
-                            <h3>AnimalFusion</h3>
-                            <p>Image2Text Generation</p>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-small">Live Demo</a>
-                                <a href="#" class="btn btn-small">GitHub</a>
+
+                    <!-- Animal Fusion -->
+                    <div class="project-card" style="background-image: url('../assets/images/projects/animalfusion.jpg')">
+                        <div class="card-content">
+                            <h3 class="card-title">Animal Fusion</h3>
+                            <p class="card-subtitle">An innovative text-to-image AI application that creates unique animal combinations using fine-tuned Stable Diffusion models. Implements advanced Prompt Engineering and RAG techniques to generate high-quality hybrid animal images with optimized generation times.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/adequatej/AnimalFusion" class="github-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="../assets/images/projects/animalfusion.jpeg" alt="Project 1">
-                        </div>
-                        <div class="project-content">
-                            <h3>AnimalFusion</h3>
-                            <p>Image2Text Generation</p>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-small">Live Demo</a>
-                                <a href="#" class="btn btn-small">GitHub</a>
+
+                    <!-- ML Lifecycle Case Study -->
+                    <div class="project-card" style="background-image: url('../assets/images/projects/machinelearning.webp')">
+                        <div class="card-content">
+                            <h3 class="card-title">ML Lifecycle Case Study</h3>
+                            <p class="card-subtitle">A cloud-deployed song recommendation chatbot utilizing Spotify's API with comprehensive monitoring and automated CI/CD. Features cross-platform cloud deployment on AWS, Azure, and GCP with Docker containerization and Prometheus metrics.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/adequatej/ML-Lifecycle-Case-Study" class="github-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="../assets/images/projects/nakamarecs.jpeg" alt="Project 1">
-                        </div>
-                        <div class="project-content">
-                            <h3>NakamaRecs</h3>
-                            <p>Anime Recommendation System</p>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-small">Live Demo</a>
-                                <a href="#" class="btn btn-small">GitHub</a>
+
+                    <!-- WPI Student Assistant Connect -->
+                    <div class="project-card" style="background-image: url('../assets/images/projects/wpi.webp')">
+                        <div class="card-content">
+                            <h3 class="card-title">WPI Student Assistant Connect</h3>
+                            <p class="card-subtitle">A full-stack platform streamlining WPI's student assistant recruitment process. Features Azure Auth0 authentication, role-based access control, and AWS infrastructure with Docker deployment, serving the WPI community with 99.9% reliability.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/adequatej/sa_connect" class="github-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="projects-cta">
-                    <a href="projects/index.html" class="btn btn-primary">View All Projects</a>
+
+                    <!-- Valentine's Day Card -->
+                    <div class="project-card" style="background-image: url('../assets/images/projects/valentines.jpg')">
+                        <div class="card-content">
+                            <h3 class="card-title">Virtual Valentine's Card</h3>
+                            <p class="card-subtitle">An interactive Valentine's Day card featuring an animated opening sequence and personalized message reveal. Built with Next.js and Tailwind CSS, enhanced with Framer Motion animations for smooth transitions and engaging user interactions.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/adequatej/valentine-card" class="github-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                                <a href="https://valentines-card-eight.vercel.app/" class="deploy-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Website -->
+                    <div class="project-card" style="background-image: url('../assets/images/projects/website.jpg')">
+                        <div class="card-content">
+                            <h3 class="card-title">Portfolio Website</h3>
+                            <p class="card-subtitle">A modern, responsive portfolio showcasing my projects with interactive 3D cards and smooth animations. Features dynamic theme switching, intersection observers for scroll animations, and custom-built components. Developed using vanilla JavaScript and CSS with a focus on performance and user experience.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/adequatej/adequatej.github.io" class="github-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                                <a href="https://adequatej.github.io/" class="deploy-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -314,13 +295,13 @@
     <script src="../scripts/components/skills.js"></script>
     <script src="../scripts/components/contact.js"></script>
     <script src="../scripts/main.js"></script>
-    <script src="../scripts/components/model.js"></script>
     <script src="../scripts/components/scrollAnimation.js"></script>
     <script src="../scripts/components/visitorCounter.js"></script>
     <script src="../scripts/components/hero.js"></script>
     <script src="../scripts/components/particle-background.js"></script>
     <script src="../scripts/components/cursor.js"></script>
     <script src="../scripts/components/skills-carousel.js"></script>
+    <script src="../scripts/components/projects.js"></script>
 </body>
 </html>
 

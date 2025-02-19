@@ -19,7 +19,6 @@ class SkillsCarousel {
             tools: [
                 { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
                 { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-                { name: 'AWS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
                 { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
                 { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
                 { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' }
@@ -84,15 +83,21 @@ class SkillsCarousel {
                     const itemRect = item.getBoundingClientRect();
                     const itemCenter = itemRect.left + itemRect.width / 2 - trackRect.left;
                     const distance = Math.abs(mouseX - itemCenter);
-                    const maxDistance = 150; 
+                    const maxDistance = 150;
                     
                     if (distance < maxDistance) {
-                        const scale = 1 + (1 - distance / maxDistance) * 0.5; 
+                        const scale = 1 + (1 - distance / maxDistance) * 0.5;
                         item.style.transform = `scale(${scale})`;
                         item.style.zIndex = Math.floor(scale * 100);
+                        if (scale > 1.1) {
+                            item.style.boxShadow = '0 0 25px rgba(37, 99, 235, 0.6), inset 0 0 25px rgba(37, 99, 235, 0.6)';
+                        } else {
+                            item.style.boxShadow = 'none';
+                        }
                     } else {
                         item.style.transform = 'scale(1)';
                         item.style.zIndex = 1;
+                        item.style.boxShadow = 'none';
                     }
                 });
             });
@@ -102,6 +107,7 @@ class SkillsCarousel {
                 items.forEach(item => {
                     item.style.transform = 'scale(1)';
                     item.style.zIndex = 1;
+                    item.style.boxShadow = 'none';
                 });
             });
         });
@@ -115,8 +121,48 @@ class SkillsCarousel {
     }
 }
 
-// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    const rows = document.querySelectorAll('.carousel-row');
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'none'; 
+                requestAnimationFrame(() => {
+                    const index = Array.from(rows).indexOf(entry.target);
+                    const delay = index * 0.2;
+                    
+                    if (index === 1) { 
+                        entry.target.style.transform = 'translateX(-100px)';
+                        entry.target.style.animation = `rowAppearFromLeft 1s ease-out ${delay}s forwards`;
+                    } else { 
+                        entry.target.style.transform = 'translateX(100px)';
+                        entry.target.style.animation = `rowAppearFromRight 1s ease-out ${delay}s forwards`;
+                    }
+                });
+            } else {
+                entry.target.style.animation = 'none';
+                entry.target.style.opacity = '0';
+                const index = Array.from(rows).indexOf(entry.target);
+                if (index === 1) {
+                    entry.target.style.transform = 'translateX(-100px)';
+                } else {
+                    entry.target.style.transform = 'translateX(100px)';
+                }
+            }
+        });
+    }, observerOptions);
+
+    rows.forEach(row => {
+        skillsObserver.observe(row);
+    });
+
     console.log('DOM loaded, creating SkillsCarousel');
     new SkillsCarousel();
 }); 

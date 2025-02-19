@@ -1,11 +1,9 @@
-// Sticky Navigation
 const navbar = document.querySelector('#navbar');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
 
-    // Add/remove background color based on scroll position
     if (currentScroll > 50) {
         navbar.classList.add('scrolled');
     } else {
@@ -22,7 +20,6 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Theme Toggle
 const themeToggle = document.querySelector('.theme-toggle');
 const body = document.body;
 
@@ -44,7 +41,6 @@ const triggerGlowAnimation = () => {
     }, 1500);
 };
 
-// Function to update the theme
 const updateTheme = (isDarkMode) => {
     if (isDarkMode) {
         body.classList.add('dark-mode');
@@ -65,7 +61,6 @@ const updateTheme = (isDarkMode) => {
 // }
 
 
-// Handle theme toggle click
 const handleToggle = (event) => {
     console.log('Button clicked');
     event.preventDefault();
@@ -92,97 +87,54 @@ const savedDarkMode = localStorage.getItem('darkMode') === 'true';
 updateTheme(savedDarkMode);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('section');
-    const navButtons = document.querySelectorAll('.nav-buttons-container input');
-    let isScrolling = false;
-
-    // Smooth scroll to section
-    function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-        if (!section) return;
-
-        isScrolling = true;
-        section.scrollIntoView({
-            behavior: 'smooth'
-        });
-
-        // Update URL hash without scrolling
-        history.pushState(null, null, `#${sectionId}`);
-
-        // Reset scrolling flag after animation
-        setTimeout(() => {
-            isScrolling = false;
-        }, 1000);
-    }
-
-    // Update active section in navbar
-    function updateActiveSection() {
-        if (isScrolling) return;
-
-        let currentSectionId = '';
-        const scrollPosition = window.scrollY;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
+    const navButtons = document.querySelectorAll('.nav-buttons-container label');
+    
+    navButtons.forEach(label => {
+        label.addEventListener('click', (e) => {
+            const input = label.querySelector('input');
+            const sectionId = input.id;
+            const targetSection = document.getElementById(sectionId);
             
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                currentSectionId = section.id;
-            }
-        });
-
-        navButtons.forEach(button => {
-            button.checked = button.id === currentSectionId;
-        });
-    }
-
-    // Event listeners for navbar buttons
-    navButtons.forEach(button => {
-        button.addEventListener('change', (e) => {
-            if (e.target.checked) {
-                scrollToSection(e.target.id);
+            if (targetSection) {
+                e.preventDefault();
+                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = targetSection.offsetTop - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
             }
         });
     });
 
-    // Scroll event listener for updating active section
-    window.addEventListener('scroll', () => {
-        requestAnimationFrame(updateActiveSection);
-    });
+    const sections = document.querySelectorAll('section');
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: `-${document.querySelector('.navbar').offsetHeight}px 0px 0px 0px`
+    };
 
-    // Initial active section check
-    updateActiveSection();
-
-    // Handle hash links on page load
-    if (window.location.hash) {
-        const sectionId = window.location.hash.substring(1);
-        setTimeout(() => {
-            scrollToSection(sectionId);
-        }, 100);
-    }
-
-    // Add scroll animations to sections
-    const sectionObserver = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
+                const sectionId = entry.target.id;
+                const radioButton = document.querySelector(`input[type="radio"]#${sectionId}`);
+                if (radioButton) {
+                    radioButton.checked = true;
+                }
             }
         });
-    }, {
-        root: null,
-        rootMargin: '-20% 0px',
-        threshold: 0
-    });
+    }, observerOptions);
 
     sections.forEach(section => {
-        sectionObserver.observe(section);
+        if (section.id) {
+            observer.observe(section);
+        }
     });
 
-    // Theme handling
     const themeButtons = document.querySelectorAll('.theme-toggle-container input[type="radio"]');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     
-    // Set initial theme based on saved preference or system preference
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         document.querySelector(`#${savedTheme}`).checked = true;
@@ -200,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Update theme when system preference changes
     prefersDarkScheme.addEventListener('change', () => {
         if (document.querySelector('#system').checked) {
             applyTheme('system');

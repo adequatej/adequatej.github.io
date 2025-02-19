@@ -61,6 +61,8 @@ Iteration 2.2:
 - fix navbar to correclty go to sections when clicked on
 - make render sections closer together
 - change coloring
+- make about and skills one section 
+- responsive for diff screen sizes/devices *
 
   
 ### Main Features
