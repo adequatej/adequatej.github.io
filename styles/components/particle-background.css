@@ -1,0 +1,29 @@
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    background: transparent;
+    opacity: 1 !important;
+}
+
+body.dark-mode #particle-canvas {
+    background: var(--background-color);
+}
+
+section:not(#hero) {
+    position: relative;
+    z-index: 2;
+    background-color: var(--background-color);
+    backdrop-filter: blur(3px);
+}
+
+#hero {
+    position: relative;
+    z-index: 3;
+    background: transparent !important;
+    backdrop-filter: none !important;
+} 

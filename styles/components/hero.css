@@ -2,11 +2,29 @@
     min-height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     padding-top: 70px;
     background-size: cover;
     background-position: center;
     opacity: 0;
     animation: heroFadeIn 1.5s ease-out forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+.rotating-title {
+    display: inline-block; 
+}
+
+.loader {
+    display: inline-block; 
+    vertical-align: middle; 
+}
+
+.words {
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 body.dark-mode .hero {
@@ -14,54 +32,42 @@ body.dark-mode .hero {
     background-position: center;
 }
 
-.hero-container > * {
-    opacity: 0;
-    transform: translateY(0px);
+.hero-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
+
 .hero-title {
-    display: inline-block;
-    margin: 0;
+    font-size: 4rem;
+    font-weight: 300;
+    margin-top: -5rem;
+    padding: 0;
+    line-height: 1.1;
+    opacity: 0;
+    animation: slideInFromLeft 1s ease-out forwards;
 }
 
-.hero-title2 {
-    display: inline-block;
-    margin: 0;
-}
-
-.hero h1 {
-    margin-bottom: 1rem;
-    animation: slideDown 0.7s ease-out forwards;
-}
-
-.hero h2, .hero h3 {
-    font-size: 2.5rem; 
-    margin: 0; 
+.hero h2 {
+    font-size: 2rem; 
+    margin-top: 0; 
     opacity: 0; 
     display: inline-block;
 }
 
-/* Apply animations */
-.hero h2 {
-    animation: slideInFromLeft 1s ease-out 0.5s; 
-    animation-fill-mode: forwards; 
-    margin-left: 60px;
-}
-
-.hero h3 {
-    animation: slideInFromRight 1s ease-out 0.5s; 
-    animation-fill-mode: forwards; 
-}
-
-
-.hero-description {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    animation: slideUp 0.8s ease-out 1.1s forwards;
-    animation-fill-mode: both;
-}
-
+/* Need to fix animations later */
 @keyframes heroFadeIn {
     from {
         opacity: 0;
@@ -73,17 +79,6 @@ body.dark-mode .hero {
     }
 }
 
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 @keyframes slideUp {
     from {
         opacity: 0;
@@ -97,7 +92,7 @@ body.dark-mode .hero {
 
 @keyframes slideInFromLeft {
     0% {
-        transform: translateX(-100%);
+        transform: translateX(-100px);
         opacity: 0;
     }
     100% {
@@ -108,7 +103,7 @@ body.dark-mode .hero {
 
 @keyframes slideInFromRight {
     0% {
-        transform: translateX(100%);
+        transform: translateX(100px);
         opacity: 0;
     }
     100% {
@@ -116,3 +111,350 @@ body.dark-mode .hero {
         opacity: 1;
     }
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(96, 165, 250, 0.2), 
+        transparent 70%
+    );
+    animation: heroGlow 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes heroGlow {
+    0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 4rem;
+    }
+    
+    .role-line {
+        font-size: 2.5rem;
+    }
+    
+    .role-carousel {
+        height: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .role-line {
+        font-size: 2rem;
+    }
+    
+    .role-carousel {
+        height: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .role-line {
+        font-size: 1.5rem;
+        flex-direction: row;
+        gap: 0.25rem;
+    }
+    
+    .role-carousel {
+        height: 2rem;
+    }
+    
+    .hero-container {
+        padding: 0 1rem;
+    }
+}
+
+/* Initial Hero View */
+.initial-view {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.initial-view .hero-container {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.skip-button {
+    margin-top: 0.5rem;
+    background: transparent;
+    border: 2px solid #ff6b6b;
+    color: #ff6b6b;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    animation: glow 2s infinite;
+}
+
+.skip-button:hover {
+    background: #ff6b6b;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+}
+
+.skip-button i {
+    animation: bounceDown 2s infinite;
+}
+
+/* Hide other sections initially */
+body.initial-load section:not(#hero),
+body.initial-load .navbar,
+body.initial-load .theme-toggle {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Dark mode adjustments */
+body.dark-mode .skip-button {
+    margin-top: -1rem;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 1rem 2rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    animation: glow 2s infinite;
+}
+
+body.dark-mode .skip-button:hover {
+    background: var(--primary-color);
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skip-button {
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Base text styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.hero-subtitle {
+    margin-top: -1rem;
+    font-size: 3rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: slideInFromRight 1s ease-out forwards;
+    text-align: center;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.highlight {
+    color: #4a9eff;
+    font-weight: 300;
+}
+
+/* Rotating text styles */
+.loader {
+    color: var(--text-color);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: 3.5rem;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.role-line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    font-size: 3rem;
+    opacity: 0;
+    margin-top: -2rem;
+    animation: slideInFromRight 1s ease-out forwards;
+    padding-left: calc(50% - 3.5rem);
+}
+
+.role-prefix {
+    font-weight: 300;
+    white-space: nowrap;
+    margin-right: 0.9rem;
+}
+
+.role-carousel {
+    position: relative;
+    height: -50px;
+    min-width: 500px;
+}
+
+.role-track {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.role {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #4a9eff;
+    font-weight: 300;
+    white-space: nowrap;
+    opacity: 0;
+}
+
+.role:nth-child(1) {
+    animation: fadeRole 6s infinite;
+}
+
+.role:nth-child(2) {
+    animation: fadeRole 6s infinite -2s;
+}
+
+.role:nth-child(3) {
+    animation: fadeRole 6s infinite -4s;
+}
+
+@keyframes fadeRole {
+    0%, 3% {
+        opacity: 0;
+        transform: translateY(25%);
+    }
+    5%, 30% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    33%, 100% {
+        opacity: 0;
+        transform: translateY(-25%);
+    }
+}
+
+/* Card styles */
+.card {
+    display: inline-flex;
+    align-items: center;
+}
+
+.subtitle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: slideInFromRight 1s ease-out forwards;
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 107, 107, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .role-line {
+        font-size: 2.5rem;
+        padding-left: calc(50% - 2.8rem);
+    }
+    
+    .role-carousel {
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .role-line {
+        font-size: 2rem;
+        padding-left: calc(50% - 2.3rem);
+    }
+    
+    .role-carousel {
+        min-width: 240px;
+    }
+}
+
+@media (max-width: 480px) {
+    .role-line {
+        font-size: 1.5rem;
+        padding-left: calc(50% - 1.8rem);
+    }
+    
+    .role-carousel {
+        min-width: 200px;
+    }
+}
+

@@ -7,8 +7,13 @@
     --background-color: white;
     --section-bg: white;
     --transition: all 0.3s ease;
+    --font-primary: 'Montserrat', sans-serif;
+    --h1-size: 3.5rem;
+    --h2-size: 2.5rem;
+    --h3-size: 2rem;
+    --text-regular: 1rem;
 }
-
+/* need to clean up later to get rid of redundant styling */
 /* Reset & Base Styles */
 * {
     margin: 0;
@@ -21,8 +26,8 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
+    font-family: var(--font-primary);
+    line-height: 1.6;
     color: var(--text-color);
 }
 
@@ -37,6 +42,12 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .about-container {
@@ -66,23 +77,107 @@ body {
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.2;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: var(--h1-size);
     font-weight: 700;
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: var(--h2-size);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: var(--h3-size);
     font-weight: 600;
 }
 
 /* Section Styles */
-section {
-    padding: 5rem 0;
+section:not(#hero) {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    margin: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.4) !important;
+    backdrop-filter: blur(2px);
 }
+
+body.dark-mode section:not(#hero) {
+    background: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Global background wrapper - sits behind everything */
+.background-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: transparent;
+}
+
+/* Content wrapper - so for no background or blur */
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: transparent !important;
+}
+
+/* Container styles */
+.about-container,
+.skills-container,
+.projects-container,
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 4;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+    background: transparent !important;
+    visibility: visible !important; 
+}
+
+/* Active state for containers */
+section.active .about-container,
+section.active .skills-container,
+section.active .projects-container,
+section.active .contact-container {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific skills container visibility */
+.skills-container {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1;
+}
+
+/* Hero section - completely transparent */
+#hero {
+    background: transparent !important;
+    backdrop-filter: none !important;
+}
+
 
 .section-title {
     text-align: center;
@@ -136,60 +231,159 @@ body.dark-mode {
     --primary-color: #60a5fa;
     --secondary-color: #3b82f6;
     background-color: var(--background-color);
-
 }
 
-/* Initial state for sections */
-section {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.5s ease-out, transform 0.4s ease-out, background-color 0.3s ease;
-    will-change: opacity, transform, background-color;
+/* Dark mode adjustments */
+body.dark-mode .background-wrapper {
+    background: rgba(0, 0, 0, 0.7);
 }
-
-section.active {
-    opacity: 1;
-    transform: translateY(0);
-    background-color: var(--background-color);
-}
-
 
 /* Responsive for diff screen sizes/devices */
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-    .nav-links {
-        display: none; 
-    }
+/* Base responsive container styles */
+.nav-container,
+.hero-container,
+.about-container,
+.skills-container,
+.projects-container,
+.contact-container {
+    width: 100%;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
 
-    .nav-container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .hero-container, .about-container, .skills-container, .projects-container, .contact-container {
-        padding: 0 1rem; 
-    }
-
-    .skills-grid, .projects-grid {
-        grid-template-columns: 1fr; 
-    }
-
-    .about-container {
-        flex-direction: column; 
-        text-align: center; 
-    }
-
-    .about-image img {
-        width: 150px;
+/* Extra Large Screens (1400px and up) */
+@media (min-width: 1400px) {
+    .nav-container,
+    .hero-container,
+    .about-container,
+    .skills-container,
+    .projects-container,
+    .contact-container {
+        max-width: 1320px;
+        padding: 0 2rem;
     }
 }
 
-/* Tablet Styles */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .skills-grid, .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
+/* Large Screens (1200px to 1399px) */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .nav-container,
+    .hero-container,
+    .about-container,
+    .skills-container,
+    .projects-container,
+    .contact-container {
+        max-width: 1140px;
+        padding: 0 2rem;
+    }
+}
+
+/* Medium Screens (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .nav-container,
+    .hero-container,
+    .about-container,
+    .skills-container,
+    .projects-container,
+    .contact-container {
+        max-width: 960px;
+        padding: 0 1.5rem;
+    }
+
+    h1 {
+        font-size: calc(var(--h1-size) * 0.9);
+    }
+
+    h2 {
+        font-size: calc(var(--h2-size) * 0.9);
+    }
+}
+
+/* Tablet Screens (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .nav-container,
+    .hero-container,
+    .about-container,
+    .skills-container,
+    .projects-container,
+    .contact-container {
+        max-width: 720px;
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: calc(var(--h1-size) * 0.8);
+    }
+
+    h2 {
+        font-size: calc(var(--h2-size) * 0.8);
+    }
+
+    section:not(#hero) {
+        min-height: auto;
+        padding: 4rem 0;
+    }
+}
+
+/* Mobile Screens (576px to 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .nav-container,
+    .hero-container,
+    .about-container,
+    .skills-container,
+    .projects-container,
+    .contact-container {
+        max-width: 540px;
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: calc(var(--h1-size) * 0.7);
+    }
+
+    h2 {
+        font-size: calc(var(--h2-size) * 0.7);
+    }
+
+    .section-title {
+        margin-bottom: 2rem;
+    }
+}
+
+/* Extra Small Screens (575px and below) */
+@media (max-width: 575px) {
+    .nav-container,
+    .hero-container,
+    .about-container,
+    .skills-container,
+    .projects-container,
+    .contact-container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    h1 {
+        font-size: calc(var(--h1-size) * 0.6);
+    }
+
+    h2 {
+        font-size: calc(var(--h2-size) * 0.6);
+    }
+
+    section:not(#hero) {
+        min-height: auto;
+        padding: 3rem 0;
+    }
+}
+
+/* Fix for scroll animations on mobile */
+@media (max-width: 768px) {
+    .about-container,
+    .skills-container,
+    .projects-container,
+    .contact-container {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 }
