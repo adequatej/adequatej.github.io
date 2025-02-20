@@ -30,7 +30,6 @@
         <p>Total Visits: <span id="total-count">0</span></p>
     </div>
 
-    
     <!-- Hero Section -->
     <section id="hero" class="hero initial-view">
         <div class="hero-container">
@@ -69,10 +68,6 @@
                     <input name="nav-section" type="radio" id="about">
                     <div class="button">About</div>
                 </label>
-                <label for="skills" class="label">
-                    <input name="nav-section" type="radio" id="skills">
-                    <div class="button">Skills</div>
-                </label>
                 <label for="projects" class="label">
                     <input name="nav-section" type="radio" id="projects">
                     <div class="button">Projects</div>
@@ -107,40 +102,49 @@
         <section id="about" class="about">
             <div class="about-container">
                 <h2 class="section-title">About Me</h2>
-                    <div class="about-image">
-                        <img src="../assets/images/profile/442FF098-8320-4AC4-8A43-FAFCDA48265A_1_201_a.jpeg" alt="Jed Geoghegan">
+                <div class="about-content-wrapper">
+                    <!-- Left Side: Profile and Description -->
+                    <div class="about-left">
+                        <div class="about-image">
+                            <img src="../assets/images/profile/442FF098-8320-4AC4-8A43-FAFCDA48265A_1_201_a.jpeg" alt="Jed Geoghegan">
+                        </div>
+                        <div class="about-text">
+                            <p>
+                                Hello! I'm a Computer Science and Data Science double major at Worcester Polytechnic Institute, 
+                                passionate about creating efficient and user-friendly applications. My expertise spans both front-end 
+                                and back-end development, with a particular focus on AI/ML integration and modern web technologies.
+                            </p>
+                            <div class="about-buttons">
+                                <a href="../assets/documents/John (Jed) Geoghegan Resume.pdf" class="resume-button" target="_blank" rel="noopener noreferrer">
+                                    <span class="button-icon"></span>
+                                    View Resume
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="about-text">
-                        <p>
-                            Hello! I'm a Computer Science and Data Science double major with a focus on creating 
-                            efficient and user-friendly applications. With a strong foundation in 
-                            both front-end and back-end development, I enjoy creating applications that are both functional and aesthetically pleasing.
-                        </p>
-                        <p>
-                            When I'm not coding, you can find me playing soccer, watching anime, or hanging out with friends. 
-                            I'm always eager to learn new technologies and take on challenging projects.
-                        </p>
-                        <a href="../assets/documents/resume.pdf" class="btn btn-primary" target="_blank">
-                            View Resume
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="skills">
-            <div class="skills-container">
-                <h2 class="section-title">Skills & Technologies</h2>
-                <div class="skills-carousel-container">
-                    <div class="carousel-row">
-                        <div class="carousel-track" id="track1" data-direction="left"></div>
-                    </div>
-                    <div class="carousel-row">
-                        <div class="carousel-track" id="track2" data-direction="right"></div>
-                    </div>
-                    <div class="carousel-row">
-                        <div class="carousel-track" id="track3" data-direction="left"></div>
+                    
+                    <!-- Right Side: Skills -->
+                    <div class="about-right">
+                        <div class="skills-carousel-container">
+                            <div class="carousel-section">
+                                <h4 class="carousel-title">Frontend</h4>
+                                <div class="carousel-row">
+                                    <div class="carousel-track" id="track1" data-direction="left"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-section">
+                                <h4 class="carousel-title">Backend</h4>
+                                <div class="carousel-row">
+                                    <div class="carousel-track" id="track2" data-direction="right"></div>
+                                </div>
+                            </div>
+                            <div class="carousel-section">
+                                <h4 class="carousel-title">Tools</h4>
+                                <div class="carousel-row">
+                                    <div class="carousel-track" id="track3" data-direction="left"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -215,6 +219,18 @@
                             <div class="card-links">
                                 <a href="https://github.com/adequatej/adequatej.github.io" class="github-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
                                 <a href="https://adequatej.github.io/" class="deploy-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Huddle Chat -->
+                    <div class="project-card" style="background-image: url('../assets/images/projects/mbta.jpg')">
+                        <div class="card-content">
+                            <h3 class="card-title">Huddle Chat</h3>
+                            <p class="card-subtitle">A modern, responsive portfolio showcasing my projects with interactive 3D cards and smooth animations. Features dynamic theme switching, intersection observers for scroll animations, and custom-built components. Developed using vanilla JavaScript and CSS with a focus on performance and user experience.</p>
+                            <div class="card-links">
+                                <a href="https://github.com/adequatej/huddle-chat" class="github-link" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                                <a href="https://tbd" class="deploy-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
                             </div>
                         </div>
                     </div>

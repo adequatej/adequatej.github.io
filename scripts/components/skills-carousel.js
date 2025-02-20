@@ -25,7 +25,7 @@ class SkillsCarousel {
             ]
         };
 
-        this.minItemsPerTrack = 15; 
+        this.minItemsPerTrack = 8; 
         this.init();
         this.setupMouseEffects();
     }
@@ -39,26 +39,24 @@ class SkillsCarousel {
 
         track.innerHTML = '';
 
-        const repeatCount = Math.ceil(this.minItemsPerTrack / skills.length);
+        const itemsNeeded = this.minItemsPerTrack * 2;
+        const repeatCount = Math.ceil(itemsNeeded / skills.length);
         const extendedSkills = Array(repeatCount).fill(skills).flat();
         
-        const skillSet = [...extendedSkills, ...extendedSkills];
-        
-        skillSet.forEach(skill => {
+        extendedSkills.forEach(skill => {
             const skillElement = this.createSkillElement(skill);
             track.appendChild(skillElement);
         });
 
         const direction = track.dataset.direction;
-        const duration = 40; 
-        
+        track.style.animation = `scroll${direction === 'left' ? 'Left' : 'Right'} 20s linear infinite`;
+
+        // fix later for no reset animation
         track.addEventListener('animationend', () => {
             track.style.animation = 'none';
-            track.offsetHeight; 
-            track.style.animation = `scroll${direction === 'left' ? 'Left' : 'Right'} ${duration}s linear infinite`;
+            void track.offsetWidth; 
+            track.style.animation = `scroll${direction === 'left' ? 'Left' : 'Right'} 20s linear infinite`;
         });
-
-        track.style.animation = `scroll${direction === 'left' ? 'Left' : 'Right'} ${duration}s linear infinite`;
     }
 
     createSkillElement(skill) {
@@ -66,7 +64,6 @@ class SkillsCarousel {
         div.className = 'skill-item';
         div.innerHTML = `<img src="${skill.icon}" alt="${skill.name}" title="${skill.name}">`;
         
-        console.log(`Created skill element for ${skill.name}`);
         return div;
     }
 
@@ -83,14 +80,14 @@ class SkillsCarousel {
                     const itemRect = item.getBoundingClientRect();
                     const itemCenter = itemRect.left + itemRect.width / 2 - trackRect.left;
                     const distance = Math.abs(mouseX - itemCenter);
-                    const maxDistance = 150;
+                    const maxDistance = 80; 
                     
                     if (distance < maxDistance) {
-                        const scale = 1 + (1 - distance / maxDistance) * 0.5;
+                        const scale = 1 + (1 - distance / maxDistance) * 0.4; 
                         item.style.transform = `scale(${scale})`;
                         item.style.zIndex = Math.floor(scale * 100);
                         if (scale > 1.1) {
-                            item.style.boxShadow = '0 0 25px rgba(37, 99, 235, 0.6), inset 0 0 25px rgba(37, 99, 235, 0.6)';
+                            item.style.boxShadow = '0 0 15px rgba(37, 99, 235, 0.6)';
                         } else {
                             item.style.boxShadow = 'none';
                         }
@@ -114,7 +111,6 @@ class SkillsCarousel {
     }
 
     init() {
-        console.log('Initializing SkillsCarousel');
         this.setupTrack('track1', this.skillSets.frontend);
         this.setupTrack('track2', this.skillSets.backend);
         this.setupTrack('track3', this.skillSets.tools);
@@ -137,24 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 requestAnimationFrame(() => {
                     const index = Array.from(rows).indexOf(entry.target);
                     const delay = index * 0.2;
-                    
-                    if (index === 1) { 
-                        entry.target.style.transform = 'translateX(-100px)';
-                        entry.target.style.animation = `rowAppearFromLeft 1s ease-out ${delay}s forwards`;
-                    } else { 
-                        entry.target.style.transform = 'translateX(100px)';
-                        entry.target.style.animation = `rowAppearFromRight 1s ease-out ${delay}s forwards`;
-                    }
+                    entry.target.style.transform = 'translateX(0)';
+                    entry.target.style.opacity = '1';
                 });
-            } else {
-                entry.target.style.animation = 'none';
-                entry.target.style.opacity = '0';
-                const index = Array.from(rows).indexOf(entry.target);
-                if (index === 1) {
-                    entry.target.style.transform = 'translateX(-100px)';
-                } else {
-                    entry.target.style.transform = 'translateX(100px)';
-                }
             }
         });
     }, observerOptions);

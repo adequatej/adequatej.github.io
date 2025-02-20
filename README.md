@@ -61,9 +61,13 @@ Iteration 2.2:
 - fix navbar to correclty go to sections when clicked on
 - make render sections closer together
 - change coloring
-- make about and skills one section 
+- make about and skills one section *
 - responsive for diff screen sizes/devices *
-
+- fix bottom of page to be consistent (all blurred background)
+- fix buttons to be more consistent
+- fix visitor count using database or google analytics
+- make project cards 3D rotation?
+- integrate database for contact form
   
 ### Main Features
 
