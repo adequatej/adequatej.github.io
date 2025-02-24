@@ -2,22 +2,21 @@
 
 This is a simple portfolio website built with HTML, CSS, and JavaScript. It showcases my skills, projects, and experiences.
 
+Keep in mind that this is only iteration 1, and I will be reimplementing my complete portfolio in iteration 2 using a new tech stack.
+
+
 Iteration 1:
 - HTML
 - CSS
 - JavaScript
 
 Iteration 2.1:
+- Next.js
 - React
-- Tailwind CSS
+- Tailwind CSS/Shadcn
 - Firebase (for visitor counts and for email routing and form handling)
 - TypeScript
-
-Iteration 2.2:
-- Next.js
-- Material Tailwind
-- Vercel, Atlas
-- NextAuth
+- Vercel
 - Husky Precommit
 
 ### Features/ideas I want to incorporate
@@ -68,6 +67,8 @@ Iteration 2.2:
 - fix visitor count using database or google analytics
 - make project cards 3D rotation?
 - integrate database for contact form
+- fix ripple mouse effect upon choice (glitches)
+- import in portoflio link 
   
 ### Main Features
 
