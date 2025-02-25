@@ -1,24 +1,23 @@
 ### Welcome to my Personal Portfolio Website!
 
-This is a simple portfolio website built with HTML, CSS, and JavaScript. It showcases my skills, projects, and experiences.
+This is a simple portfolio website built with HTML, CSS, and JavaScript. It showcases my skills, projects, and experiences. 
+
+# Keep in mind this is only iteration 1, and it is not 100% complete because it was just for grounding my vanilla skills. I have already moved on to iteration 2 which uses more modern technologies which is expected to be complete shortly. Look out for that soon! 
 
 Iteration 1:
 - HTML
 - CSS
 - JavaScript
-
-Iteration 2.1:
-- React
-- Tailwind CSS
-- Firebase (for visitor counts and for email routing and form handling)
-- TypeScript
-
-Iteration 2.2:
+  
+Iteration 2:
 - Next.js
-- Material Tailwind
-- Vercel, Atlas
-- NextAuth
+- React
+- Tailwind CSS/Shadcn
+- Firebase (for visitor counts and for email routing/form handling)
+- TypeScript
+- Vercel
 - Husky Precommit
+- Prettier
 
 ### Features/ideas I want to incorporate
 - Keep track of count of users that click and view website (maybe further implement for each page/project/etc.)*
