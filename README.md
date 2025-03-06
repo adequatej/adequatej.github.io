@@ -2,7 +2,7 @@
 
 This is a simple portfolio website built with HTML, CSS, and JavaScript. It showcases my skills, projects, and experiences. 
 
-# Keep in mind this is only iteration 1, and it is not 100% complete because it was just for grounding my vanilla skills. I have already moved on to iteration 2 which uses more modern technologies which is expected to be complete shortly. Look out for that soon! 
+# Iteration 2 is complete!!!: <a href="https://jedgeoghegan.com" target="_blank">jedgeoghegan.com</a>
 
 Iteration 1:
 - HTML
